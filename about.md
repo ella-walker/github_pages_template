@@ -4,30 +4,25 @@ title: "About Me"
 
 ## Background
 
-Write a brief introduction about yourself here. Include:
-
-- Your academic background
-- Your interest in data science
-- Your career goals
-- Any relevant experience or projects
+Hello! My name is Ella Walker, and I am a student at Brigham Young University, majoring in Statistics. My passion for data science stems from a desire to uncover insights from data and apply them to real-world problems. I aspire to build a career in data science, focusing on community needs. This year, I had the opportunity to participate in a Gadsden Research Study with Alegra Learning, which further fueled my enthusiasm for data-driven decision-making.
 
 ## Education
 
-- **[Your Degree]** - [University Name], [Year]
+- **BS Statistics** - Brigham Young University, April, 2026 (Expected)
 - **Relevant Coursework**: Statistics, Data Analysis, Programming, etc.
 
 ## Skills & Interests
 
 ### Technical Skills
-- **Programming**: Python
+- **Programming**: Python, R
 - **Data Analysis**: Pandas, NumPy
 - **Visualization**: Matplotlib, Seaborn
 - **Machine Learning**: Scikit-learn
 - **Tools**: Jupyter Notebooks, Git/GitHub
 
 ### Areas of Interest
-- [Your specific interests, e.g., environmental data, healthcare analytics, finance, etc.]
-- [Other areas you're curious about]
+- Sociology and community development
+- Education and learning technologies
 
 ## Goals
 
@@ -39,9 +34,9 @@ Describe what you hope to achieve through your data science journey:
 
 ## Contact
 
-- **Email**: your.email@example.com
-- **GitHub**: [github.com/your-username](https://github.com/your-username)
-- **LinkedIn**: [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
+- **Email**: wella2@byu.edu
+- **GitHub**: [github.com/ella-walker](https://github.com/ella-walker)
+- **LinkedIn**: [linkedin.com/in/ella-walker3](https://www.linkedin.com/in/ella-walker3/)
 
 ---
 
