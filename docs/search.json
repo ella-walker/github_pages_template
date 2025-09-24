@@ -62,42 +62,42 @@
     "href": "about.html",
     "title": "About Me",
     "section": "",
-    "text": "Write a brief introduction about yourself here. Include:\n\nYour academic background\nYour interest in data science\nYour career goals\nAny relevant experience or projects"
+    "text": "Hello! My name is Ella Walker, and I am a student at Brigham Young University, studying Statistics. My passion for data science stems from a desire to uncover insights from data and apply them to real-world problems. I aspire to build a career in data science, focusing on community needs. This year, I had the opportunity to participate in a Gadsden Research Study with Alegra Learning, which further fueled my enthusiasm for data-driven decision-making."
   },
   {
     "objectID": "about.html#background",
     "href": "about.html#background",
     "title": "About Me",
     "section": "",
-    "text": "Write a brief introduction about yourself here. Include:\n\nYour academic background\nYour interest in data science\nYour career goals\nAny relevant experience or projects"
+    "text": "Hello! My name is Ella Walker, and I am a student at Brigham Young University, studying Statistics. My passion for data science stems from a desire to uncover insights from data and apply them to real-world problems. I aspire to build a career in data science, focusing on community needs. This year, I had the opportunity to participate in a Gadsden Research Study with Alegra Learning, which further fueled my enthusiasm for data-driven decision-making."
   },
   {
     "objectID": "about.html#education",
     "href": "about.html#education",
     "title": "About Me",
     "section": "Education",
-    "text": "Education\n\nBS Statistics - [Brigham Young University], [April, 2026 (Expected)]\nRelevant Coursework: Statistics, Data Analysis, Programming, etc."
+    "text": "Education\n\nBS Statistics - Brigham Young University, April, 2026 (Expected)\nRelevant Coursework: Statistics, Data Analysis, Programming, etc."
   },
   {
     "objectID": "about.html#skills-interests",
     "href": "about.html#skills-interests",
     "title": "About Me",
     "section": "Skills & Interests",
-    "text": "Skills & Interests\n\nTechnical Skills\n\nProgramming: Python\nData Analysis: Pandas, NumPy\nVisualization: Matplotlib, Seaborn\nMachine Learning: Scikit-learn\nTools: Jupyter Notebooks, Git/GitHub\n\n\n\nAreas of Interest\n\n[Your specific interests, e.g., environmental data, healthcare analytics, finance, etc.]\n[Other areas you’re curious about]"
+    "text": "Skills & Interests\n\nTechnical Skills\n\nProgramming: Python, R\nData Analysis: Pandas, NumPy\nVisualization: Matplotlib, Seaborn\nMachine Learning: Scikit-learn\nTools: Jupyter Notebooks, Git/GitHub\n\n\n\nAreas of Interest\n\nSociology and community development\nEducation and learning technologies"
   },
   {
     "objectID": "about.html#goals",
     "href": "about.html#goals",
     "title": "About Me",
     "section": "Goals",
-    "text": "Goals\nDescribe what you hope to achieve through your data science journey:\n\nShort-term learning objectives\nLong-term career aspirations\nTypes of problems you want to solve"
+    "text": "Goals\nThrough my data science journey, I aim to achieve the following goals:\n\nBuild a strong foundation in data science principles and techniques\nGain hands-on experience through projects and internships\nContribute to meaningful projects that address community challenges\nDevelop a professional network in the data science field"
   },
   {
     "objectID": "about.html#contact",
     "href": "about.html#contact",
     "title": "About Me",
     "section": "Contact",
-    "text": "Contact\n\nEmail: your.email@example.com\nGitHub: github.com/your-username\nLinkedIn: linkedin.com/in/your-profile\n\n\nThis portfolio showcases my learning progress and projects completed during my data science studies."
+    "text": "Contact\n\nEmail: wella2@byu.edu\nGitHub: github.com/ella-walker\nLinkedIn: linkedin.com/in/ella-walker3\n\n\nThis portfolio showcases my learning progress and projects completed during my data science studies."
   },
   {
     "objectID": "projects/data-acquisition.html",
@@ -118,5 +118,12 @@
     "crumbs": [
       "Final Project"
     ]
+  },
+  {
+    "objectID": "projects/blog-topic.html",
+    "href": "projects/blog-topic.html",
+    "title": "Fixing Messy Column Names in Seconds",
+    "section": "",
+    "text": "This is coming down the pipeline. Check again later."
   }
 ]
