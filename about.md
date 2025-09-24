@@ -4,7 +4,7 @@ title: "About Me"
 
 ## Background
 
-Hello! My name is Ella Walker, and I am a student at Brigham Young University, majoring in Statistics. My passion for data science stems from a desire to uncover insights from data and apply them to real-world problems. I aspire to build a career in data science, focusing on community needs. This year, I had the opportunity to participate in a Gadsden Research Study with Alegra Learning, which further fueled my enthusiasm for data-driven decision-making.
+Hello! My name is Ella Walker, and I am a student at Brigham Young University, studying Statistics. My passion for data science stems from a desire to uncover insights from data and apply them to real-world problems. I aspire to build a career in data science, focusing on community needs. This year, I had the opportunity to participate in a Gadsden Research Study with Alegra Learning, which further fueled my enthusiasm for data-driven decision-making.
 
 ## Education
 
@@ -26,11 +26,12 @@ Hello! My name is Ella Walker, and I am a student at Brigham Young University, m
 
 ## Goals
 
-Describe what you hope to achieve through your data science journey:
+Through my data science journey, I aim to achieve the following goals:
 
-- Short-term learning objectives
-- Long-term career aspirations
-- Types of problems you want to solve
+- Build a strong foundation in data science principles and techniques
+- Gain hands-on experience through projects and internships
+- Contribute to meaningful projects that address community challenges
+- Develop a professional network in the data science field
 
 ## Contact
 
