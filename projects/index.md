@@ -4,9 +4,6 @@ title: "Projects Overview"
 
 ## All Projects
 
-### [Blog Post](blog.qmd)
-**Description**: Recommendations for cleaning messy columns with pandas.
-
 ### [Exploratory Data Analysis Project](eda.qmd)
 **Description**: Pick a dataset and explore it to discover insights and answer questions.
 
