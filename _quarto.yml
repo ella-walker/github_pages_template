@@ -13,8 +13,6 @@ website:
         href: index.md
       - text: "About Me"
         href: about.md
-      - text: "Blog"
-        href: projects/blog.qmd
       - text: "Projects"
         menu:
           - text: "All Projects"
@@ -22,6 +20,8 @@ website:
           - text: "---"
           - text: "Exploratory Data Analysis"
             href: projects/eda.qmd
+          - text: "Blog"
+            href: projects/blog.qmd
           - text: "Data Acquisition"
             href: projects/data-acquisition.qmd
           - text: "Final Project"
@@ -39,6 +39,7 @@ website:
         - projects/eda.qmd
         - projects/data-acquisition.qmd
         - projects/final-project.qmd
+        - projects/blog.qmd
 
 format:
   html:

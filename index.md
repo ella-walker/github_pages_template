@@ -33,6 +33,11 @@ Learn how I explore datasets to find interesting patterns and answer questions.
 :::
 
 ::: {.g-col-6}
+### [Blog](projects/blog.qmd)
+Read my thoughts on data science topics and what I'm learning.
+:::
+
+::: {.g-col-6}
 ### [Data Collection Project](projects/data-acquisition.qmd)
 See how I gather data from different sources and prepare it for analysis.
 :::
