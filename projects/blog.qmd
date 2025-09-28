@@ -1,2 +1,79 @@
-this is my blog page. or it will be when i can figure everything out
+---
+title: "Cleaning Messy Column Names"
+author: "Ella Walker"
+date: "2025-09-29"
+format:
+  html:
+    code-fold: true
+    toc: true
+---
+
+## Cleaning Messy Column Names in Seconds with Pandas
+
+Messy columns can make your data difficult to understand and work with. Luckily, Python offers a very simple way to change your column names to better fit your dataset.
+
+## Why is cleaning data important?
+
+Data cleaning is one of the essential steps in the data science lifecycle. Data cleaning ensures accuracy, consistency, and completeness. Data cleaning will help identify and contain errors which will ultimately lead to reliable results.
+
+Column names are an important part of a clean data set because they not only make the data clear for the analyst, but also improve data integrity for all potential users.
+
+## How do I use pandas to make consistent column names?
+
+There are several processes which are important to cleaning column names. 
+
+Step 1: Remove leading and trailing whitespace
+
+Step 2: Standardize formatting
+
+Step 3: Remove special characters
+
+Once you Have mastered these steps you can combine them for a simplified cleaning process.
+
+# Step 1: Remove Leading and Trailing Whitespace
+
+Sometimes datasets contain column names with extra spaces at the beginning or end. Since your analysis will require the column names to be exactly the same as it appears in your dataset, this can often lead to confusion and unecessary errors.
+
+```{python}
+import pandas as pd
+
+data = pd.DataFrame({
+    " Title ": ["Pride and Prejudice", "The Great Gatsby", "Wuthering Heights"]
+    " Author ": ["Jane Austen", "F. Scott Fitzgerald", "Emily Bronte"]
+    " Year ": [1813, 1925, 1847]
+})
+
+# Strip whitespace using pandas
+data.columns = data.columns.str.strip()
+
+print(data)
+```
+
+# Step 2: Standardize Formatting
+
+Column names are often inconsistent in formatting. Sometimes they have a mix of uppercase and lowercase letters and often they have spaces instead of underscores between words.
+
+```{python}
+import pandas as pd
+
+data = pd.DataFrame({
+    "State": ["Utah", "Florida", "Connecticut"]
+    "Capital city": ["Salt Lake City", "Tallahassee", "Hartford"]
+    "Population (millions)": [3.5, 23.4, 3.7]
+})
+
+def clean_columns(data):
+    data.columns = (
+        data.columns
+        .str.strip()
+        .str.lower()
+        .str.replace(" ", "_")
+        .str.replace(r'[^a-zA-Z0-9_]', '', regex = True)
+    )
+    return data
+
+data = clean_columns(data)
+print(data)
+
+```
 
