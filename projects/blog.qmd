@@ -1,13 +1,3 @@
----
-title: "Cleaning Messy Column Names"
-author: "Ella Walker"
-date: "2025-09-29"
-format:
-  html:
-    code-fold: true
-    toc: true
----
-
 ## Cleaning Messy Column Names in Seconds with Pandas
 
 Messy columns can make your data difficult to understand and work with. Luckily, Python offers a very simple way to change your column names to better fit your dataset.
