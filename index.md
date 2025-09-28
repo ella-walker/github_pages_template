@@ -34,7 +34,7 @@ Learn how I explore datasets to find interesting patterns and answer questions.
 
 ::: {.g-col-6}
 ### [Blog](projects/blog.qmd)
-Read my thoughts on data science topics and what I'm learning.
+Read my thoughts on cleaning messy columns with pandas.
 :::
 
 ::: {.g-col-6}

@@ -37,16 +37,16 @@ Sometimes datasets contain column names with extra spaces at the beginning or en
 ```{python}
 import pandas as pd
 
-data = pd.DataFrame({
-    " Title ": ["Pride and Prejudice", "The Great Gatsby", "Wuthering Heights"]
-    " Author ": ["Jane Austen", "F. Scott Fitzgerald", "Emily Bronte"]
+books = pd.DataFrame({
+    " Title ": ["Pride and Prejudice", "The Great Gatsby", "Wuthering Heights"],
+    " Author ": ["Jane Austen", "F. Scott Fitzgerald", "Emily Bronte"],
     " Year ": [1813, 1925, 1847]
 })
 
 # Strip whitespace using pandas
-data.columns = data.columns.str.strip()
+books.columns = books.columns.str.strip()
 
-print(data)
+books
 ```
 
 # Step 2: Standardize Formatting
@@ -54,12 +54,41 @@ print(data)
 Column names are often inconsistent in formatting. Sometimes they have a mix of uppercase and lowercase letters and often they have spaces instead of underscores between words.
 
 ```{python}
-import pandas as pd
+cities = pd.DataFrame({
+    "State": ["Utah", "Florida", "Connecticut"],
+    "Capital City": ["Salt Lake City", "Tallahassee", "Hartford"],
+    "Population in millions": [3.5, 23.4, 3.7]
+})
 
-data = pd.DataFrame({
-    "State": ["Utah", "Florida", "Connecticut"]
-    "Capital city": ["Salt Lake City", "Tallahassee", "Hartford"]
-    "Population (millions)": [3.5, 23.4, 3.7]
+cities.columns = cities.columns.str.lower().str.replace(" ", "_")
+
+cities
+```
+
+# Step 3: Remove Special Characters
+
+Special characters in your column names may cause problems in your data. To keep the data consistent and clean remove them.
+
+```{python}
+bakery = pd.DataFrame({
+    "item": ["croissant", "muffin", "bagel"],
+    "price ($)": [2.50, 1.75, 3.25],
+    "quantity (#)": [7, 12, 8]
+})
+
+bakery.columns = bakery.columns.str.replace(r'[^a-zA-z0-9_]', '', regex=True)
+
+bakery
+```
+
+## Putting it all Together
+
+Now that you have learned several new skills you can combine them all into one simple function for quick and repeatable cleaning.
+
+```{python}
+movies = pd.DataFrame({
+    " Title ": ["Superman", "Fantastic Four", "Dog Man"],
+    " Box Office Amount in Millions $ ": [600, 519, 145]
 })
 
 def clean_columns(data):
@@ -68,13 +97,15 @@ def clean_columns(data):
         .str.strip()
         .str.lower()
         .str.replace(" ", "_")
-        .str.replace(r'[^a-zA-Z0-9_]', '', regex = True)
+        .str.replace(r'[^a-zA-Z0-9_]', '', regex=True)
     )
     return data
 
-data = clean_columns(data)
-print(data)
+movies = clean_columns(movies)
 
+movies
 ```
 
-# Step 3: 
+## Conclusion
+
+Standardizing column names is super quick and repeatable with pandas. Using these strategies will help you succeed in your data analysis projects.
