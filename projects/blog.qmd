@@ -8,6 +8,8 @@ Data cleaning is one of the essential steps in the data science lifecycle. Data 
 
 Column names are an important part of a clean data set because they not only make the data clear for the analyst, but also improve data integrity for all potential users.
 
+![Image credit: Analytics Training Hub (https://analyticstraininghub.com/life-cycle-of-data-science/)](data-science-lifecycle.jpg)
+
 ## How do I use pandas to make consistent column names?
 
 There are several processes which are important to cleaning column names. 
