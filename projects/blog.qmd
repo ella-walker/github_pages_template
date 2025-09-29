@@ -11,19 +11,23 @@ jupyter: python3
 
 ## Cleaning Messy Column Names in Seconds with Pandas
 
-Messy columns can make your data difficult to understand and work with. Luckily, Python offers a very simple way to change your column names to make your analysis easier and more reliable.
+Messy or inconsistent columns can make your data difficult to understand and work with. If your dataset is poorly formatted, you may notice you are spending more of your project trying to understand your own data than analyzing it. Fortunately, Python offers a very simple way to change your column names through pandas to make your analysis easier and more reliable.
+
+In this post we will compile some common column issues into an easy step by step list that you can repeat on any project.
 
 ## Why is cleaning data important?
 
-Data cleaning is one of the essential steps in the data science lifecycle. Data cleaning ensures accuracy, consistency, and completeness. Data cleaning will help identify and contain errors which will ultimately lead to reliable results.
+Data cleaning is one of the essential steps in the data science lifecycle, as pictured below. Before using a dataset you must clean it to ensure accuracy, consistency, and completeness. Dirty data can lead to the wrong conclusions, confusing bugs, and wasted time.
 
-Column names are an important part of a clean data set because they not only make the data clear for the analyst, but also improve data integrity for all potential users.
+Column names may seem trivial but they are actually an important part of a clean data set because they not only make the data clear for the analyst, but also improve data integrity for all potential users.
 
 ![Image credit: Analytics Training Hub (https://analyticstraininghub.com/life-cycle-of-data-science/)](../data-science-lifecycle.jpg)
 
+By investing a few minutes to clean your column names, you may be saving yourself hours in debugging and ensuring reliable results.
+
 ## How do I use pandas to make consistent column names?
 
-There are several processes which are important to cleaning column names. 
+Cleaning column names in pandas can be simplified to three main steps:
 
 Step 1: Remove leading and trailing whitespace
 
@@ -31,11 +35,13 @@ Step 2: Standardize formatting
 
 Step 3: Remove special characters
 
-Once you Have mastered these steps you can combine them for a simplified cleaning process.
+Once you understand these steps, you can combine them into a single repeatable function which will clean all your datasets in seconds.
 
 # Step 1: Remove Leading and Trailing Whitespace
 
-Sometimes datasets contain column names with extra spaces at the beginning or end. Since your analysis will require the column names to be exactly the same as it appears in your dataset, this can often lead to confusion and unecessary errors.
+Sometimes datasets contain column names with extra spaces at the beginning or end. See the code block below for an example. Notice that there is a space at the beginning and end of each column name. " Name " is not the same as "Name".
+
+ Since your analysis will require the column names to be exactly the same as they appears in your dataset, this can often lead to confusion and unnecessary errors.
 
 ```{python}
 import pandas as pd
@@ -54,7 +60,7 @@ books
 
 # Step 2: Standardize Formatting
 
-Column names are often inconsistent in formatting. Sometimes they have a mix of uppercase and lowercase letters and often they have spaces instead of underscores between words.
+Column names are often inconsistent in formatting. Sometimes they have a mix of uppercase and lowercase letters. Spaces between words are also common, but not very useful. Standardizing the formatting will make it easier to refer to columns later. The example below contains column names with both uppercase letters and spaces. Watch how the column names change with one line of code.
 
 ```{python}
 cities = pd.DataFrame({
@@ -71,7 +77,7 @@ cities
 
 # Step 3: Remove Special Characters
 
-Special characters in your column names may cause problems in your data. To keep the data consistent and clean remove them.
+Special characters like #, $, %, or ! in your column names may cause problems with pandas operations or SQL queries. To keep your code error-free try removing them.
 
 ```{python}
 bakery = pd.DataFrame({
@@ -88,7 +94,7 @@ bakery
 
 ## Putting it all Together
 
-Now that you have learned several new skills you can combine them all into one simple function for quick and repeatable cleaning.
+Now that you have learned these three steps, you can combine them into a single function to quickly and consistently clean any dataset.
 
 ```{python}
 movies = pd.DataFrame({
@@ -114,4 +120,6 @@ movies
 
 ## Conclusion
 
-Standardizing column names is super quick and repeatable with pandas. Be sure to use these techniques on your next project!
+Messy column names don't have to slow you down! By removing whitespace, standardizing formatting, and removing special chaaracters you can quickly make your dataset more readable and consistent, and less prone to errors.
+
+With pandas, this process is repeatable and scalable, so you can apply it to any dataset in seconds. Make sure to add this step to your data cleaning workflow, your future self (and others) will thank you for it!

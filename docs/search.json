@@ -4,7 +4,7 @@
     "href": "projects/blog.html",
     "title": "Cleaning Messy Columns Blog",
     "section": "",
-    "text": "Messy columns can make your data difficult to understand and work with. Luckily, Python offers a very simple way to change your column names to make your analysis easier and more reliable.",
+    "text": "Messy or inconsistent columns can make your data difficult to understand and work with. If your dataset is poorly formatted, you may notice you are spending more of your project trying to understand your own data than analyzing it. Fortunately, Python offers a very simple way to change your column names through pandas to make your analysis easier and more reliable.\nIn this post we will compile some common column issues into an easy step by step list that you can repeat on any project.",
     "crumbs": [
       "Cleaning Messy Columns Blog"
     ]
@@ -14,7 +14,7 @@
     "href": "projects/blog.html#cleaning-messy-column-names-in-seconds-with-pandas",
     "title": "Cleaning Messy Columns Blog",
     "section": "",
-    "text": "Messy columns can make your data difficult to understand and work with. Luckily, Python offers a very simple way to change your column names to make your analysis easier and more reliable.",
+    "text": "Messy or inconsistent columns can make your data difficult to understand and work with. If your dataset is poorly formatted, you may notice you are spending more of your project trying to understand your own data than analyzing it. Fortunately, Python offers a very simple way to change your column names through pandas to make your analysis easier and more reliable.\nIn this post we will compile some common column issues into an easy step by step list that you can repeat on any project.",
     "crumbs": [
       "Cleaning Messy Columns Blog"
     ]
@@ -24,7 +24,7 @@
     "href": "projects/blog.html#why-is-cleaning-data-important",
     "title": "Cleaning Messy Columns Blog",
     "section": "Why is cleaning data important?",
-    "text": "Why is cleaning data important?\nData cleaning is one of the essential steps in the data science lifecycle. Data cleaning ensures accuracy, consistency, and completeness. Data cleaning will help identify and contain errors which will ultimately lead to reliable results.\nColumn names are an important part of a clean data set because they not only make the data clear for the analyst, but also improve data integrity for all potential users.\n\n\n\nImage credit: Analytics Training Hub (https://analyticstraininghub.com/life-cycle-of-data-science/)",
+    "text": "Why is cleaning data important?\nData cleaning is one of the essential steps in the data science lifecycle, as pictured below. Before using a dataset you must clean it to ensure accuracy, consistency, and completeness. Dirty data can lead to the wrong conclusions, confusing bugs, and wasted time.\nColumn names may seem trivial but they are actually an important part of a clean data set because they not only make the data clear for the analyst, but also improve data integrity for all potential users.\n\n\n\nImage credit: Analytics Training Hub (https://analyticstraininghub.com/life-cycle-of-data-science/)\n\n\nBy investing a few minutes to clean your column names, you may be saving yourself hours in debugging and ensuring reliable results.",
     "crumbs": [
       "Cleaning Messy Columns Blog"
     ]
@@ -34,7 +34,7 @@
     "href": "projects/blog.html#how-do-i-use-pandas-to-make-consistent-column-names",
     "title": "Cleaning Messy Columns Blog",
     "section": "How do I use pandas to make consistent column names?",
-    "text": "How do I use pandas to make consistent column names?\nThere are several processes which are important to cleaning column names.\nStep 1: Remove leading and trailing whitespace\nStep 2: Standardize formatting\nStep 3: Remove special characters\nOnce you Have mastered these steps you can combine them for a simplified cleaning process.",
+    "text": "How do I use pandas to make consistent column names?\nCleaning column names in pandas can be simplified to three main steps:\nStep 1: Remove leading and trailing whitespace\nStep 2: Standardize formatting\nStep 3: Remove special characters\nOnce you understand these steps, you can combine them into a single repeatable function which will clean all your datasets in seconds.",
     "crumbs": [
       "Cleaning Messy Columns Blog"
     ]
@@ -44,7 +44,7 @@
     "href": "projects/blog.html#putting-it-all-together",
     "title": "Cleaning Messy Columns Blog",
     "section": "Putting it all Together",
-    "text": "Putting it all Together\nNow that you have learned several new skills you can combine them all into one simple function for quick and repeatable cleaning.\n\nmovies = pd.DataFrame({\n    \" Title \": [\"Superman\", \"Fantastic Four\", \"Dog Man\"],\n    \" Box Office Amount in Millions $ \": [600, 519, 145]\n})\n\ndef clean_columns(data):\n    data.columns = (\n        data.columns\n        .str.strip()\n        .str.lower()\n        .str.replace(\" \", \"_\")\n        .str.replace(r'[^a-zA-Z0-9_]', '', regex=True)\n    )\n    return data\n\n# Running our new cleaning function\nmovies = clean_columns(movies)\n\nmovies\n\n\n\n\n\n\n\n\ntitle\nbox_office_amount_in_millions_\n\n\n\n\n0\nSuperman\n600\n\n\n1\nFantastic Four\n519\n\n\n2\nDog Man\n145",
+    "text": "Putting it all Together\nNow that you have learned these three steps, you can combine them into a single function to quickly and consistently clean any dataset.\n\nmovies = pd.DataFrame({\n    \" Title \": [\"Superman\", \"Fantastic Four\", \"Dog Man\"],\n    \" Box Office Amount in Millions $ \": [600, 519, 145]\n})\n\ndef clean_columns(data):\n    data.columns = (\n        data.columns\n        .str.strip()\n        .str.lower()\n        .str.replace(\" \", \"_\")\n        .str.replace(r'[^a-zA-Z0-9_]', '', regex=True)\n    )\n    return data\n\n# Running our new cleaning function\nmovies = clean_columns(movies)\n\nmovies\n\n\n\n\n\n\n\n\ntitle\nbox_office_amount_in_millions_\n\n\n\n\n0\nSuperman\n600\n\n\n1\nFantastic Four\n519\n\n\n2\nDog Man\n145",
     "crumbs": [
       "Cleaning Messy Columns Blog"
     ]
@@ -54,7 +54,7 @@
     "href": "projects/blog.html#conclusion",
     "title": "Cleaning Messy Columns Blog",
     "section": "Conclusion",
-    "text": "Conclusion\nStandardizing column names is super quick and repeatable with pandas. Be sure to use these techniques on your next project!",
+    "text": "Conclusion\nMessy column names don’t have to slow you down! By removing whitespace, standardizing formatting, and removing special chaaracters you can quickly make your dataset more readable and consistent, and less prone to errors.\nWith pandas, this process is repeatable and scalable, so you can apply it to any dataset in seconds. Make sure to add this step to your data cleaning workflow, your future self (and others) will thank you for it!",
     "crumbs": [
       "Cleaning Messy Columns Blog"
     ]
