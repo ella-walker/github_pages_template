@@ -1,0 +1,110 @@
+[
+  {
+    "objectID": "projects/blog.html",
+    "href": "projects/blog.html",
+    "title": "Cleaning Messy Columns Blog",
+    "section": "",
+    "text": "Messy columns can make your data difficult to understand and work with. Luckily, Python offers a very simple way to change your column names to make your analysis easier and more reliable.",
+    "crumbs": [
+      "Cleaning Messy Columns Blog"
+    ]
+  },
+  {
+    "objectID": "projects/blog.html#cleaning-messy-column-names-in-seconds-with-pandas",
+    "href": "projects/blog.html#cleaning-messy-column-names-in-seconds-with-pandas",
+    "title": "Cleaning Messy Columns Blog",
+    "section": "",
+    "text": "Messy columns can make your data difficult to understand and work with. Luckily, Python offers a very simple way to change your column names to make your analysis easier and more reliable.",
+    "crumbs": [
+      "Cleaning Messy Columns Blog"
+    ]
+  },
+  {
+    "objectID": "projects/blog.html#why-is-cleaning-data-important",
+    "href": "projects/blog.html#why-is-cleaning-data-important",
+    "title": "Cleaning Messy Columns Blog",
+    "section": "Why is cleaning data important?",
+    "text": "Why is cleaning data important?\nData cleaning is one of the essential steps in the data science lifecycle. Data cleaning ensures accuracy, consistency, and completeness. Data cleaning will help identify and contain errors which will ultimately lead to reliable results.\nColumn names are an important part of a clean data set because they not only make the data clear for the analyst, but also improve data integrity for all potential users.\n\n\n\nImage credit: Analytics Training Hub (https://analyticstraininghub.com/life-cycle-of-data-science/)",
+    "crumbs": [
+      "Cleaning Messy Columns Blog"
+    ]
+  },
+  {
+    "objectID": "projects/blog.html#how-do-i-use-pandas-to-make-consistent-column-names",
+    "href": "projects/blog.html#how-do-i-use-pandas-to-make-consistent-column-names",
+    "title": "Cleaning Messy Columns Blog",
+    "section": "How do I use pandas to make consistent column names?",
+    "text": "How do I use pandas to make consistent column names?\nThere are several processes which are important to cleaning column names.\nStep 1: Remove leading and trailing whitespace\nStep 2: Standardize formatting\nStep 3: Remove special characters\nOnce you Have mastered these steps you can combine them for a simplified cleaning process.",
+    "crumbs": [
+      "Cleaning Messy Columns Blog"
+    ]
+  },
+  {
+    "objectID": "projects/blog.html#putting-it-all-together",
+    "href": "projects/blog.html#putting-it-all-together",
+    "title": "Cleaning Messy Columns Blog",
+    "section": "Putting it all Together",
+    "text": "Putting it all Together\nNow that you have learned several new skills you can combine them all into one simple function for quick and repeatable cleaning.\n\nmovies = pd.DataFrame({\n    \" Title \": [\"Superman\", \"Fantastic Four\", \"Dog Man\"],\n    \" Box Office Amount in Millions $ \": [600, 519, 145]\n})\n\ndef clean_columns(data):\n    data.columns = (\n        data.columns\n        .str.strip()\n        .str.lower()\n        .str.replace(\" \", \"_\")\n        .str.replace(r'[^a-zA-Z0-9_]', '', regex=True)\n    )\n    return data\n\n# Running our new cleaning function\nmovies = clean_columns(movies)\n\nmovies\n\n\n\n\n\n\n\n\ntitle\nbox_office_amount_in_millions_\n\n\n\n\n0\nSuperman\n600\n\n\n1\nFantastic Four\n519\n\n\n2\nDog Man\n145",
+    "crumbs": [
+      "Cleaning Messy Columns Blog"
+    ]
+  },
+  {
+    "objectID": "projects/blog.html#conclusion",
+    "href": "projects/blog.html#conclusion",
+    "title": "Cleaning Messy Columns Blog",
+    "section": "Conclusion",
+    "text": "Conclusion\nStandardizing column names is super quick and repeatable with pandas. Be sure to use these techniques on your next project!",
+    "crumbs": [
+      "Cleaning Messy Columns Blog"
+    ]
+  },
+  {
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Projects Overview",
+    "section": "",
+    "text": "Description: Pick a dataset and explore it to discover insights and answer questions.\n\n\n\nDescription: Find an interesting data source, collect the data, and prepare it for analysis.\n\n\n\nDescription: A comprehensive project that shows off my data science skills.",
+    "crumbs": [
+      "Projects Overview"
+    ]
+  },
+  {
+    "objectID": "projects/index.html#all-projects",
+    "href": "projects/index.html#all-projects",
+    "title": "Projects Overview",
+    "section": "",
+    "text": "Description: Pick a dataset and explore it to discover insights and answer questions.\n\n\n\nDescription: Find an interesting data source, collect the data, and prepare it for analysis.\n\n\n\nDescription: A comprehensive project that shows off my data science skills.",
+    "crumbs": [
+      "Projects Overview"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to My Data Science Portfolio",
+    "section": "",
+    "text": "Welcome to my data science portfolio! This site shows my journey learning data science and analytics. Here you’ll find projects that demonstrate what I’ve learned and discovered.\n\n\nThis portfolio shows my work learning data science. Each project includes:\n\nMy code with documentation\nVisualizations I created\nWhat I learned and discovered\n\nI built this site using Quarto and host it on GitHub Pages.\n\n\n\n\nProgramming: Python, Pandas for data analysis\nVisualization: Creating charts with Matplotlib and Seaborn\nData Collection: Getting data from files, websites, and APIs\nAnalysis: Finding patterns and answering questions with data\n\n\n\n\n\n\n\nLearn how I explore datasets to find interesting patterns and answer questions.\n\n\n\nRead my thoughts on cleaning messy columns with pandas.\n\n\n\nSee how I gather data from different sources and prepare it for analysis.\n\n\n\nSee how I tackle a data science project beginning to end.\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
+  },
+  {
+    "objectID": "index.html#about-this-portfolio",
+    "href": "index.html#about-this-portfolio",
+    "title": "Welcome to My Data Science Portfolio",
+    "section": "",
+    "text": "This portfolio shows my work learning data science. Each project includes:\n\nMy code with documentation\nVisualizations I created\nWhat I learned and discovered\n\nI built this site using Quarto and host it on GitHub Pages."
+  },
+  {
+    "objectID": "index.html#skills-im-learning",
+    "href": "index.html#skills-im-learning",
+    "title": "Welcome to My Data Science Portfolio",
+    "section": "",
+    "text": "Programming: Python, Pandas for data analysis\nVisualization: Creating charts with Matplotlib and Seaborn\nData Collection: Getting data from files, websites, and APIs\nAnalysis: Finding patterns and answering questions with data"
+  },
+  {
+    "objectID": "index.html#my-projects",
+    "href": "index.html#my-projects",
+    "title": "Welcome to My Data Science Portfolio",
+    "section": "",
+    "text": "Learn how I explore datasets to find interesting patterns and answer questions.\n\n\n\nRead my thoughts on cleaning messy columns with pandas.\n\n\n\nSee how I gather data from different sources and prepare it for analysis.\n\n\n\nSee how I tackle a data science project beginning to end.\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
+  }
+]

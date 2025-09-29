@@ -1,6 +1,17 @@
+---
+title: "Cleaning Messy Columns Blog"
+author: "Ella Walker"
+date: "2025-09-29"
+format:
+  html:
+    code-fold: false
+    toc: true
+jupyter: python3
+---
+
 ## Cleaning Messy Column Names in Seconds with Pandas
 
-Messy columns can make your data difficult to understand and work with. Luckily, Python offers a very simple way to change your column names to better fit your dataset.
+Messy columns can make your data difficult to understand and work with. Luckily, Python offers a very simple way to change your column names to make your analysis easier and more reliable.
 
 ## Why is cleaning data important?
 
@@ -8,7 +19,7 @@ Data cleaning is one of the essential steps in the data science lifecycle. Data 
 
 Column names are an important part of a clean data set because they not only make the data clear for the analyst, but also improve data integrity for all potential users.
 
-![Image credit: Analytics Training Hub (https://analyticstraininghub.com/life-cycle-of-data-science/)](data-science-lifecycle.jpg)
+![Image credit: Analytics Training Hub (https://analyticstraininghub.com/life-cycle-of-data-science/)](../data-science-lifecycle.jpg)
 
 ## How do I use pandas to make consistent column names?
 
@@ -52,6 +63,7 @@ cities = pd.DataFrame({
     "Population in millions": [3.5, 23.4, 3.7]
 })
 
+# Making all words lowercase and removing spaces within column names
 cities.columns = cities.columns.str.lower().str.replace(" ", "_")
 
 cities
@@ -68,6 +80,7 @@ bakery = pd.DataFrame({
     "quantity (#)": [7, 12, 8]
 })
 
+# Removing special characters
 bakery.columns = bakery.columns.str.replace(r'[^a-zA-z0-9_]', '', regex=True)
 
 bakery
@@ -93,6 +106,7 @@ def clean_columns(data):
     )
     return data
 
+# Running our new cleaning function
 movies = clean_columns(movies)
 
 movies
@@ -100,4 +114,4 @@ movies
 
 ## Conclusion
 
-Standardizing column names is super quick and repeatable with pandas. Using these strategies will help you succeed in your data analysis projects.
+Standardizing column names is super quick and repeatable with pandas. Be sure to use these techniques on your next project!
