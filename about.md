@@ -1,5 +1,7 @@
 ---
+layout: page
 title: "About Me"
+permalink: /about/
 ---
 
 ## Get to Know Me!
