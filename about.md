@@ -31,7 +31,7 @@ In my spare time I like to read, knit, travel, and spend time with friends and f
 ## Experience & Goals
 
 ### Experience
-- **Internship** - Data Analyst Intern at [Alegra Learning](https://alegra.com/) (Current)
+- **Internship** - Data Analyst Intern at [Alegra Learning](https://joyschoolenglish.com/team) (Current)
   - Analyzing educational data to improve learning outcomes for EL students
   - Creating visualizations to communicate findings
   - Reviewing and testing software features
