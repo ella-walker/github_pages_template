@@ -51,6 +51,8 @@ Through my data science journey, I aim to achieve the following goals:
 - **GitHub**: [github.com/ella-walker](https://github.com/ella-walker)
 - **LinkedIn**: [linkedin.com/in/ella-walker3](https://www.linkedin.com/in/ella-walker3/)
 
+![Ella Walker](../ella_walker.jpg)
+
 ---
 
 *This portfolio showcases my learning progress and projects completed during my data science studies.*
