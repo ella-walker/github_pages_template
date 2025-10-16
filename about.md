@@ -8,7 +8,7 @@ permalink: /about/
 
 Hello! My name is Ella Walker, and I am a student at Brigham Young University, studying Statistics. My passion for data science stems from a desire to uncover insights from data and apply them to real-world problems. I aspire to build a career in data science, focusing on community needs. This year, I had the opportunity to participate in a Gadsden Research Study with Alegra Learning, which further fueled my enthusiasm for data-driven decision-making.
 
-In my spare time I like to read, knit, travel, and spend time with friends and family. Recently I knit my first hat! This summer I traveled to Yosemite National Park and had a great time hiking through the beautiful scenery.
+In my spare time I like to read, knit, travel, and spend time with friends and family. Recently I knit my first hat! This summer I traveled to Yosemite National Park and had a great time hiking through the beautiful scenery. 
 
 ## Education
 
