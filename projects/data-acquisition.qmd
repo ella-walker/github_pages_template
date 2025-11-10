@@ -9,3 +9,19 @@ format:
 ---
 
 This is for my data acquisition blog where I will show you had to create a unique dataset and what information I gained from my unique dataset.
+
+**Introduction**
+Why is this project relevant and interesting? What is the motivating question? What do we hope to learn from this data?
+
+**Summary of Steps**
+1. overly detailed accounts are discouraged
+2. Provide enough info to help someone else potentially get started with a similar project
+
+**EDA Highlights**
+* Summary statistics
+* Summary graphics
+* Information about final dataset (total sample size, counts of categorical variables, numerical summaries of numeric variables)
+
+**Further Information and Resources**
+This includes the original wikipedia page with a live link
+This also includes the link to my code from the blog in a separate GitHub repo
