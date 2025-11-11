@@ -247,6 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#summary-of-steps" id="toc-summary-of-steps" class="nav-link" data-scroll-target="#summary-of-steps">Summary of Steps</a></li>
   <li><a href="#eda-highlights" id="toc-eda-highlights" class="nav-link" data-scroll-target="#eda-highlights">EDA Highlights</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -284,16 +285,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This is for my data acquisition blog where I will show you had to create a unique dataset and what information I gained from my unique dataset.</p>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>Why is this project relevant and interesting? What is the motivating question? What do we hope to learn from this data?</p>
+<p>For this project I created my own dataset in which I used webscraping techniques to create a unique dataframe that I could explore. I chose to explore information on mass shootings in the United States so far in 2025. I was curious where shootings were centralized, how many people died or were injured in mass shootings, and if there were any common characteristics between these tragic events.</p>
+<p>I believe that if we can understand this data then we can better create policy and regulation which will serve the American people and promote peace and safety for everyone.</p>
 </section>
 <section id="summary-of-steps" class="level1">
 <h1>Summary of Steps</h1>
 <ol type="1">
-<li>overly detailed accounts are discouraged</li>
-<li>Provide enough info to help someone else potentially get started with a similar project</li>
+<li>I found a Wikipedia page which contained a table that had an up to date list of shootings in the United States. This table contained all the information I was interested in.</li>
+<li>Using the BeautifulSoup library I downloaded the data and created my own table. This contained over 200 entries and 6 variables. One of the variables that I was unsure how to deal with was a written description of the data.</li>
+<li>I explored the data in an EDA to better understand the variables and their relationships. In doing this I created some visualizations.</li>
+<li>I looked for answers to my initial questions. I am happy to share my findings in the conclusion of this blog.</li>
 </ol>
 </section>
 <section id="eda-highlights" class="level1">
@@ -303,6 +306,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Summary graphics</li>
 <li>Information about final dataset (total sample size, counts of categorical variables, numerical summaries of numeric variables)</li>
 </ul>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>Ultimately my findings revealed this information about mass shootings in the United States ____. I am curious how this information compares to previous years in American history, with a specific interest around major political or economic events. I am also curious how these results compare to other countries with a similar GDP and culture.</p>
 <p><strong>Further Information and Resources</strong> This includes the original wikipedia page with a live link</p>
 
 
@@ -772,23 +779,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>This is for my data acquisition blog where I will show you had to create a unique dataset and what information I gained from my unique dataset.</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>Why is this project relevant and interesting? What is the motivating question? What do we hope to learn from this data?</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu"># Summary of Steps</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>overly detailed accounts are discouraged</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Provide enough info to help someone else potentially get started with a similar project</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># EDA Highlights</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Summary statistics</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Summary graphics</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Information about final dataset (total sample size, counts of categorical variables, numerical summaries of numeric variables)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>**Further Information and Resources**</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>This includes the original wikipedia page with a live link</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>For this project I created my own dataset in which I used webscraping techniques to create a unique dataframe that I could explore. I chose to explore information on mass shootings in the United States so far in 2025. I was curious where shootings were centralized, how many people died or were injured in mass shootings, and if there were any common characteristics between these tragic events. </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>I believe that if we can understand this data then we can better create policy and regulation which will serve the American people and promote peace and safety for everyone.</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu"># Summary of Steps</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>I found a Wikipedia page which contained a table that had an up to date list of shootings in the United States. This table contained all the information I was interested in.</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Using the BeautifulSoup library I downloaded the data and created my own table. This contained over 200 entries and 6 variables. One of the variables that I was unsure how to deal with was a written description of the data.</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>I explored the data in an EDA to better understand the variables and their relationships. In doing this I created some visualizations.</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>I looked for answers to my initial questions. I am happy to share my findings in the conclusion of this blog.</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu"># EDA Highlights</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Summary statistics</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Summary graphics</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Information about final dataset (total sample size, counts of categorical variables, numerical summaries of numeric variables)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusion</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>Ultimately my findings revealed this information about mass shootings in the United States ____. I am curious how this information compares to previous years in American history, with a specific interest around major political or economic events. I am also curious how these results compare to other countries with a similar GDP and culture.</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>**Further Information and Resources**</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>This includes the original wikipedia page with a live link</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
