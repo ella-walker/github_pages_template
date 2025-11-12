@@ -154,7 +154,27 @@
     "href": "projects/data-acquisition.html",
     "title": "Data Acquisition Project",
     "section": "",
-    "text": "Introduction\nFor this project I created my own dataset in which I used webscraping techniques to create a unique dataframe that I could explore. I chose to explore information on mass shootings in the United States so far in 2025. I was curious where shootings were centralized, how many people died or were injured in mass shootings, and if there were any common characteristics between these tragic events.\nI believe that if we can understand this data then we can better create policy and regulation which will serve the American people and promote peace and safety for everyone.\n\n\nSummary of Steps\n\nI found a Wikipedia page which contained a table that had an up to date list of shootings in the United States. This table contained all the information I was interested in.\nUsing the BeautifulSoup library I downloaded the data and created my own table. This contained over 200 entries and 6 variables. One of the variables that I was unsure how to deal with was a written description of the data.\nI explored the data in an EDA to better understand the variables and their relationships. In doing this I created some visualizations.\nI looked for answers to my initial questions. I am happy to share my findings in the conclusion of this blog.\n\n\n\nEDA Highlights\n\nSummary statistics\nSummary graphics\nInformation about final dataset (total sample size, counts of categorical variables, numerical summaries of numeric variables)\n\n\n\nConclusion\nUltimately my findings revealed this information about mass shootings in the United States ____. I am curious how this information compares to previous years in American history, with a specific interest around major political or economic events. I am also curious how these results compare to other countries with a similar GDP and culture.\nFurther Information and Resources This includes the original wikipedia page with a live link",
+    "text": "For this project I created my own dataset in which I used webscraping techniques to create a unique dataframe that I could explore. I chose to explore information on mass shootings in the United States so far in 2025. I was curious when and where shootings occurred most frequently, how many people died or were injured in mass shootings, and if there were any common characteristics between these tragic events.\nI believe that if we can understand this data then we can better create policy and regulation which will serve all American residents and promote peace and safety for everyone.",
+    "crumbs": [
+      "Data Acquisition Project"
+    ]
+  },
+  {
+    "objectID": "projects/data-acquisition.html#summary-statistics",
+    "href": "projects/data-acquisition.html#summary-statistics",
+    "title": "Data Acquisition Project",
+    "section": "Summary Statistics",
+    "text": "Summary Statistics\nTotal Shootings: 385 Total Deaths: 375 Total Injuries: 1723 Average Victims per Shooting: 5.45",
+    "crumbs": [
+      "Data Acquisition Project"
+    ]
+  },
+  {
+    "objectID": "projects/data-acquisition.html#relevant-graphics",
+    "href": "projects/data-acquisition.html#relevant-graphics",
+    "title": "Data Acquisition Project",
+    "section": "Relevant Graphics",
+    "text": "Relevant Graphics",
     "crumbs": [
       "Data Acquisition Project"
     ]
