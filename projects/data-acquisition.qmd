@@ -24,6 +24,7 @@ I used the requests library to HTTP requests from Wikipedia and then pandas to m
 
 3. Clean Data
 The data did not contain any missing values and was already well organized, but there were still some changes I had to make. 
+
 - I renamed variables for clarity. 
 Some of the variables, like "Location" or "Total" were confusing and could only be understood in the context of the article associated with the page. I renamed these to a clearer "City" and "Total Vicitms" respectively. 
 - Next I had to reformat the entries
