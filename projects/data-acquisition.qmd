@@ -17,25 +17,40 @@ I believe that if we can understand this data then we can better create policy a
 # Summary of Steps
 
 1. Find the Data
+
 I found a [Wikipedia page](https://en.wikipedia.org/wiki/List_of_mass_shootings_in_the_United_States_in_2025) which included a table that had an up to date list of shootings in the United States. This table contained all the relevant information I was looking for.
 
 2. Scrape the Data
+
 I used the requests library to HTTP requests from Wikipedia and then pandas to manipulate and read the HTML tables. The table that I used for my analysis originally contained ___ entries and 6 variables. These variables were a combination of numeric and categorical.
 
 3. Clean Data
+
 The data did not contain any missing values and was already well organized, but there were still some changes I had to make. 
 
-- I renamed variables for clarity. 
+a. I renamed variables for clarity. 
+
 Some of the variables, like "Location" or "Total" were confusing and could only be understood in the context of the article associated with the page. I renamed these to a clearer "City" and "Total Vicitms" respectively. 
-- Next I had to reformat the entries
+
+b. Next I had to reformat the entries
+
 The date was in the format of Month, Day (i.e. November, 12). I reformatted this to include the year and make it easier to reorder. I used for the standard format of YYYY-MM-DD.
 I also changed City Name. In the original table, there were footnotes marking if the perpetrator was injured or killed or if the victim did not die during the event but died later. I created a new indicator column with perpetrator deaths and perpetrator injuries.
-- Reordering the Data
+
+c. Reordering the Data
+
 I reformatted the data to be chronological. The first entry is now January 1, 2025.
-- Description of Event
+
+d. Description of Event
+
 I decided to keep the column with a description of the event. Although it may not be extremely relevant during the EDA process, I know that it can have use in further analysis. However, I reordered the columns so that it was the last column.
 
 4. Explore Data in EDA
+
+I chose to use the libraries matplotlib and seaborn to create visuals which would help my understand the data and answer my questions. All visualizations are included in the EDA portion of this blog.
+
+5. Draw Conclusions
+
 I looked for answers to my initial questions. I am happy to share my findings in the conclusion of this blog.
 
 # EDA Highlights
@@ -44,10 +59,13 @@ My EDA was very revealing regarding trends in mass shootings. I have included se
 
 ## Summary Statistics
 
-Total Shootings: 385
-Total Deaths: 375
-Total Injuries: 1723
-Average Victims per Shooting: 5.45
+- Total Shootings: 385
+
+- Total Deaths: 375
+
+- Total Injuries: 1723
+
+- Average Victims per Shooting: 5.45
 
 ## Relevant Graphics
 
