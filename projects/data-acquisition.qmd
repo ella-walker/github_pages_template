@@ -10,26 +10,55 @@ format:
 
 # Introduction
 
-For this project I created my own dataset in which I used webscraping techniques to create a unique dataframe that I could explore. I chose to explore information on mass shootings in the United States so far in 2025. I was curious where shootings were centralized, how many people died or were injured in mass shootings, and if there were any common characteristics between these tragic events. 
+For this project I created my own dataset in which I used webscraping techniques to create a unique dataframe that I could explore. I chose to explore information on mass shootings in the United States so far in 2025. I was curious when and where shootings occurred most frequently, how many people died or were injured in mass shootings, and if there were any common characteristics between these tragic events. 
 
-I believe that if we can understand this data then we can better create policy and regulation which will serve the American people and promote peace and safety for everyone.
+I believe that if we can understand this data then we can better create policy and regulation which will serve all American residents and promote peace and safety for everyone.
 
 # Summary of Steps
-1. I found a Wikipedia page which contained a table that had an up to date list of shootings in the United States. This table contained all the information I was interested in.
-2. Using the BeautifulSoup library I downloaded the data and created my own table. This contained over 200 entries and 6 variables. One of the variables that I was unsure how to deal with was a written description of the data.
-3. I explored the data in an EDA to better understand the variables and their relationships. In doing this I created some visualizations.
-4. I looked for answers to my initial questions. I am happy to share my findings in the conclusion of this blog.
+
+1. Find the Data
+I found a [Wikipedia page](https://en.wikipedia.org/wiki/List_of_mass_shootings_in_the_United_States_in_2025) which included a table that had an up to date list of shootings in the United States. This table contained all the relevant information I was looking for.
+
+2. Scrape the Data
+I used the requests library to HTTP requests from Wikipedia and then pandas to manipulate and read the HTML tables. The table that I used for my analysis originally contained ___ entries and 6 variables. These variables were a combination of numeric and categorical.
+
+3. Clean Data
+The data did not contain any missing values and was already well organized, but there were still some changes I had to make. 
+- I renamed variables for clarity. 
+Some of the variables, like "Location" or "Total" were confusing and could only be understood in the context of the article associated with the page. I renamed these to a clearer "City" and "Total Vicitms" respectively. 
+- Next I had to reformat the entries
+The date was in the format of Month, Day (i.e. November, 12). I reformatted this to include the year and make it easier to reorder. I used for the standard format of YYYY-MM-DD.
+I also changed City Name. In the original table, there were footnotes marking if the perpetrator was injured or killed or if the victim did not die during the event but died later. I created a new indicator column with perpetrator deaths and perpetrator injuries.
+- Reordering the Data
+I reformatted the data to be chronological. The first entry is now January 1, 2025.
+- Description of Event
+I decided to keep the column with a description of the event. Although it may not be extremely relevant during the EDA process, I know that it can have use in further analysis. However, I reordered the columns so that it was the last column.
+
+4. Explore Data in EDA
+I looked for answers to my initial questions. I am happy to share my findings in the conclusion of this blog.
 
 # EDA Highlights
 
-- Summary statistics
-- Summary graphics
-- Information about final dataset (total sample size, counts of categorical variables, numerical summaries of numeric variables)
+My EDA was very revealing regarding trends in mass shootings. I have included several categories of information that may be of interest.
+
+## Summary Statistics
+
+Total Shootings: 385
+Total Deaths: 375
+Total Injuries: 1723
+Average Victims per Shooting: 5.45
+
+## Relevant Graphics
+
 
 # Conclusion
 
 Ultimately my findings revealed this information about mass shootings in the United States ____. I am curious how this information compares to previous years in American history, with a specific interest around major political or economic events. I am also curious how these results compare to other countries with a similar GDP and culture.
 
+One note I would like to make is that the blog was posted on November 12, 2025. Thus this does not include any data from November 12 to December 31 of 2025. However, I ultimately still chose to use 2025 data because I felt it was more relevant than any past data could be. The Wikipedia page cited in the Resources section of this blog will continue to be updated as shooting, unfortunately, occur in the U.S. throughout the rest of the year.
+
 **Further Information and Resources**
-This includes the original wikipedia page with a live link
+The data used for this analysis can be found on [this](https://en.wikipedia.org/wiki/List_of_mass_shootings_in_the_United_States_in_2025) Wikipedia page on mass shootings in the United States in 2025 so far.
+
+You can find the Github repository containing my full analysis [here](https://github.com/ella-walker/Data-Acquisition-Blog) if you are interested to learn more.
 
