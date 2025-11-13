@@ -18,32 +18,32 @@ I believe that if we can understand this data then we can better create policy a
 
 1. Find the Data
 
-I found a [Wikipedia page](https://en.wikipedia.org/wiki/List_of_mass_shootings_in_the_United_States_in_2025) which included a table that had an up to date list of shootings in the United States. This table contained all the relevant information I was looking for.
+  I found a [Wikipedia page](https://en.wikipedia.org/wiki/List_of_mass_shootings_in_the_United_States_in_2025) which included a table that had an up to date list of shootings in the United States. This table contained all the relevant information I was looking for.
 
 2. Scrape the Data
 
-I used the requests library to HTTP requests from Wikipedia and then pandas to manipulate and read the HTML tables. The table that I used for my analysis originally contained ___ entries and 6 variables. These variables were a combination of numeric and categorical.
+  I used the requests library to HTTP requests from Wikipedia and then pandas to manipulate and read the HTML tables. The table that I used for my analysis originally contained ___ entries and 6 variables. These variables were a combination of numeric and categorical.
 
 3. Clean Data
 
-The data did not contain any missing values and was already well organized, but there were still some changes I had to make. 
+  The data did not contain any missing values and was already well organized, but there were still some changes I had to make. 
 
-a. I renamed variables for clarity. 
+  a. I renamed variables for clarity. 
 
-Some of the variables, like "Location" or "Total" were confusing and could only be understood in the context of the article associated with the page. I renamed these to a clearer "City" and "Total Vicitms" respectively. 
+  Some of the variables, like "Location" or "Total" were confusing and could only be understood in the context of the article associated with the page. I renamed these to a clearer "City" and "Total Vicitms" respectively. 
 
-b. Next I had to reformat the entries
+  b. Next I had to reformat the entries
 
-The date was in the format of Month, Day (i.e. November, 12). I reformatted this to include the year and make it easier to reorder. I used for the standard format of YYYY-MM-DD.
-I also changed City Name. In the original table, there were footnotes marking if the perpetrator was injured or killed or if the victim did not die during the event but died later. I created a new indicator column with perpetrator deaths and perpetrator injuries.
+  The date was in the format of Month, Day (i.e. November, 12). I reformatted this to include the year and make it easier to reorder. I used for the standard format of YYYY-MM-DD.
+  I also changed City Name. In the original table, there were footnotes marking if the perpetrator was injured or killed or if the victim did not die during the event but died later. I created a new indicator column with perpetrator deaths and perpetrator injuries.
 
-c. Reordering the Data
+  c. Reordering the Data
 
-I reformatted the data to be chronological. The first entry is now January 1, 2025.
+  I reformatted the data to be chronological. The first entry is now January 1, 2025.
 
-d. Description of Event
+  d. Description of Event
 
-I decided to keep the column with a description of the event. Although it may not be extremely relevant during the EDA process, I know that it can have use in further analysis. However, I reordered the columns so that it was the last column.
+  I decided to keep the column with a description of the event. Although it may not be extremely relevant during the EDA process, I know that it can have use in further analysis. However, I reordered the columns so that it was the last column.
 
 4. Explore Data in EDA
 
@@ -56,6 +56,85 @@ I looked for answers to my initial questions. I am happy to share my findings in
 # EDA Highlights
 
 My EDA was very revealing regarding trends in mass shootings. I have included several categories of information that may be of interest.
+
+The plot below is a bar graph showing total victims by month with deaths shown in red and injuries shown in blue. As we can see, there are a significant amount of victims in July compared to other months of the year. When we read the description for shootings in July, we don't see a significant event or shooting. Instead, we find a series of minor shootings throughout the country.
+
+```{python}
+#| label: fig-victimsbymonth
+#| fig-cap: "Total Victims by Month"
+#| fig-width: 10
+#| fig-height: 6
+#| dpi: 150
+import sys
+print(sys.executable)
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("../mass_shootings_2025.csv")
+
+# Prepare data
+df['Month'] = pd.to_datetime(df['Date']).dt.month
+monthly = df.groupby('Month')[['Total Deaths', 'Total Injuries']].sum().reset_index()
+
+# Plot stacked bars
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Plot deaths
+ax.bar(monthly['Month'], monthly['Total Deaths'], color='DarkRed', label='Deaths')
+
+# Plot injuries on top
+ax.bar(monthly['Month'], monthly['Total Injuries'], 
+       bottom=monthly['Total Deaths'], color='SteelBlue', label='Injuries')
+
+# Labels and title
+ax.set_title('Total Deaths and Injuries by Month in 2025')
+ax.set_xlabel('Month')
+ax.set_ylabel('Count')
+ax.set_xticks(range(1, 13))
+ax.set_xticklabels(['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'])
+ax.legend()
+
+# Note below plot
+plt.figtext(0.55, -0.02,
+            "Note: This graph was created on November 12, 2025.\nShootings for November and December are incomplete.")
+
+plt.tight_layout()
+plt.show()
+
+```
+
+I was also highly interested in if shootings were concentrated in a certain location. I used a bar chart to compare shootings by state.
+
+```{python}
+#| label: fig-shootingsbystate
+#| fig-cap: "Total Shootings by US State or Territory"
+#| fig-width: 10
+#| fig-height: 6
+#| dpi: 150
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Example: your state counts
+state_counts = df['State or Territory'].value_counts().reset_index()
+state_counts.columns = ['State or Territory', 'Total Shootings']
+
+# Plot
+fig, ax = plt.subplots(figsize=(12, 8))
+bars = ax.barh(state_counts['State or Territory'], state_counts['Total Shootings'], color='teal')
+
+# Add numbers at the end of each bar
+for bar in bars:
+    width = bar.get_width()
+    ax.text(width + 0.5, bar.get_y() + bar.get_height()/2,  # x-position, y-position
+            f'{int(width)}', va='center', ha='left', fontsize=10)
+
+# Labels and title
+ax.set_xlabel('Total Shootings')
+ax.set_title('Total Shootings by State or Territory')
+plt.tight_layout()
+plt.show()
+```
 
 ## Summary Statistics
 
