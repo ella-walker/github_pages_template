@@ -323,7 +323,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Step 1: Remove Leading and Trailing Whitespace</h1>
 <p>Sometimes datasets contain column names with extra spaces at the beginning or end. See the code block below for an example. Notice that there is a space at the beginning and end of each column name. ” Name ” is not the same as “Name”.</p>
 <p>Since your analysis will require the column names to be exactly the same as they appears in your dataset, this can often lead to confusion and unnecessary errors.</p>
-<div id="e0087612" class="cell" data-execution_count="1">
+<div id="079e3b8f" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>books <span class="op">=</span> pd.DataFrame({</span>
@@ -378,7 +378,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-2-standardize-formatting" class="level1">
 <h1>Step 2: Standardize Formatting</h1>
 <p>Column names are often inconsistent in formatting. Sometimes they have a mix of uppercase and lowercase letters. Spaces between words are also common, but not very useful. Standardizing the formatting will make it easier to refer to columns later. The example below contains column names with both uppercase letters and spaces. Watch how the column names change with one line of code.</p>
-<div id="0725d7e6" class="cell" data-execution_count="2">
+<div id="38972214" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"State"</span>: [<span class="st">"Utah"</span>, <span class="st">"Florida"</span>, <span class="st">"Connecticut"</span>],</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Capital City"</span>: [<span class="st">"Salt Lake City"</span>, <span class="st">"Tallahassee"</span>, <span class="st">"Hartford"</span>],</span>
@@ -431,7 +431,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-3-remove-special-characters" class="level1">
 <h1>Step 3: Remove Special Characters</h1>
 <p>Special characters like #, $, %, or ! in your column names may cause problems with pandas operations or SQL queries. To keep your code error-free try removing them.</p>
-<div id="4e58cfc4" class="cell" data-execution_count="3">
+<div id="0d53a5f0" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>bakery <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"item"</span>: [<span class="st">"croissant"</span>, <span class="st">"muffin"</span>, <span class="st">"bagel"</span>],</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"price ($)"</span>: [<span class="fl">2.50</span>, <span class="fl">1.75</span>, <span class="fl">3.25</span>],</span>
@@ -483,7 +483,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="putting-it-all-together" class="level2">
 <h2 class="anchored" data-anchor-id="putting-it-all-together">Putting it all Together</h2>
 <p>Now that you have learned these three steps, you can combine them into a single function to quickly and consistently clean any dataset.</p>
-<div id="1a0d8fa6" class="cell" data-execution_count="4">
+<div id="97dba9a9" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>movies <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">" Title "</span>: [<span class="st">"Superman"</span>, <span class="st">"Fantastic Four"</span>, <span class="st">"Dog Man"</span>],</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">" Box Office Amount in Millions $ "</span>: [<span class="dv">600</span>, <span class="dv">519</span>, <span class="dv">145</span>]</span>
