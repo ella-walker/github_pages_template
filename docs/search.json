@@ -122,21 +122,31 @@
     ]
   },
   {
-    "objectID": "projects/data-acquisition.html#summary-statistics",
-    "href": "projects/data-acquisition.html#summary-statistics",
+    "objectID": "projects/data-acquisition.html#victims-by-month",
+    "href": "projects/data-acquisition.html#victims-by-month",
     "title": "Data Acquisition Project",
-    "section": "Summary Statistics",
-    "text": "Summary Statistics\n\nTotal Shootings: 385\nTotal Deaths: 375\nTotal Injuries: 1723\nAverage Victims per Shooting: 5.45\nTotal Percentage of Shootings with Perpetrator Deaths: 8.31%\nTotal Percentage of Shootings with Perpetrator Injuries: 2.60%",
+    "section": "Victims by Month",
+    "text": "Victims by Month\nThe plot below is a bar graph showing total victims by month with deaths shown in red and injuries shown in blue. Interestingly, the spike noted in July doesn’t correspond to a single major shooting but rather several smaller events scattered across the country. This highlights the widespread nature of the problem rather than isolated incidents.\nThis also potentially highlights a seasonal trend of shootings. Mass shootings seem to be higher across summer months than any other months of the year. In future reserach I am curious to see if this trend of summer shootings is common across time.\n\n\nCode\nimport sys\nprint(sys.executable)\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\ndf = pd.read_csv(\"../mass_shootings_2025.csv\")\n\n# Prepare data\ndf['Month'] = pd.to_datetime(df['Date']).dt.month\nmonthly = df.groupby('Month')[['Total Deaths', 'Total Injuries']].sum().reset_index()\n\n# Plot stacked bars\nfig, ax = plt.subplots(figsize=(10, 6))\n\n# Plot deaths\nax.bar(monthly['Month'], monthly['Total Deaths'], color='DarkRed', label='Deaths')\n\n# Plot injuries on top\nax.bar(monthly['Month'], monthly['Total Injuries'], \n       bottom=monthly['Total Deaths'], color='SteelBlue', label='Injuries')\n\n# Labels and title\nax.set_title('Total Deaths and Injuries by Month in 2025')\nax.set_xlabel('Month')\nax.set_ylabel('Count')\nax.set_xticks(range(1, 13))\nax.set_xticklabels(['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'])\nax.legend()\n\n# Note below plot\nplt.figtext(0.55, -0.02,\n            \"Note: This graph was created on November 12, 2025.\\nShootings for November and December are incomplete.\")\n\nplt.tight_layout()\nplt.show()\n\n\n/opt/miniconda3/bin/python\n\n\n\n\n\n\n\n\nFigure 1: Total Victims by Month",
     "crumbs": [
       "Data Acquisition Project"
     ]
   },
   {
-    "objectID": "projects/data-acquisition.html#relevant-graphics",
-    "href": "projects/data-acquisition.html#relevant-graphics",
+    "objectID": "projects/data-acquisition.html#distribution-of-victims-per-shooting",
+    "href": "projects/data-acquisition.html#distribution-of-victims-per-shooting",
     "title": "Data Acquisition Project",
-    "section": "Relevant Graphics",
-    "text": "Relevant Graphics",
+    "section": "Distribution of Victims per Shooting",
+    "text": "Distribution of Victims per Shooting\nAfter looking at the distribution of victims by month of the year I was curious to know how many victims there are per shooting. The following boxplot highlights and median and interquartile range of the data. The data is clearly right skewed with the median falling around 5 and several outliers that range up to 30.\n\n\nCode\nimport seaborn as sns\nimport pandas as pd\n\n# Load your dataset\ndf = pd.read_csv(\"../mass_shootings_2025.csv\")\n\n# Compute total victims per shooting\ndf['Total Victims'] = df['Total Deaths'] + df['Total Injuries']\n\n\nplt.figure(figsize=(8,6))\nsns.boxplot(x=df['Total Victims'], color='lightcoral')\nplt.title(\"Boxplot of Victims per Shooting in 2025\")\nplt.xlabel(\"Number of Victims\")\nplt.show()\n\n\n\n\n\n\n\n\nFigure 2: Boxplot of Distribution of Victims per Shooting",
+    "crumbs": [
+      "Data Acquisition Project"
+    ]
+  },
+  {
+    "objectID": "projects/data-acquisition.html#shootings-by-state",
+    "href": "projects/data-acquisition.html#shootings-by-state",
+    "title": "Data Acquisition Project",
+    "section": "Shootings by State",
+    "text": "Shootings by State\nI was also highly interested in if shootings were concentrated in a certain location. I used a bar chart to compare shootings by state.\nMost shootings occurred in Texas, California, and Illinois. Texas, California, and Illinois are all highly populated states, so containing a high proportion of shootings seems realistic. In future research I am curious to see if states with high shootings are strongly correlated with low income states or states with little gun regulation.\n\n\nCode\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Example: your state counts\nstate_counts = df['State or Territory'].value_counts().reset_index()\nstate_counts.columns = ['State or Territory', 'Total Shootings']\n\n# Plot\nfig, ax = plt.subplots(figsize=(12, 8))\nbars = ax.barh(state_counts['State or Territory'], state_counts['Total Shootings'], color='teal')\n\n# Add numbers at the end of each bar\nfor bar in bars:\n    width = bar.get_width()\n    ax.text(width + 0.5, bar.get_y() + bar.get_height()/2,  # x-position, y-position\n            f'{int(width)}', va='center', ha='left', fontsize=10)\n\n# Labels and title\nax.set_xlabel('Total Shootings')\nax.set_title('Total Shootings by State or Territory')\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\nFigure 3: Total Shootings by US State or Territory\n\n\n\n\n\nThis EDA answers my initial questions by showing that mass shootings are spread across the U.S., with certain months and states showing higher frequency. A next step could involve comparing 2025 to prior years or exploring correlations with socioeconomic or political events.",
     "crumbs": [
       "Data Acquisition Project"
     ]
@@ -198,35 +208,5 @@
     "title": "Welcome to My Data Science Portfolio",
     "section": "",
     "text": "Learn how I explore datasets to find interesting patterns and answer questions.\n\n\n\nRead my thoughts on cleaning messy columns with pandas.\n\n\n\nSee how I gather data from different sources and prepare it for analysis.\n\n\n\nSee how I tackle a data science project beginning to end.\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
-  },
-  {
-    "objectID": "projects/data-acquisition.html#victims-by-month",
-    "href": "projects/data-acquisition.html#victims-by-month",
-    "title": "Data Acquisition Project",
-    "section": "Victims by Month",
-    "text": "Victims by Month\nThe plot below is a bar graph showing total victims by month with deaths shown in red and injuries shown in blue. Interestingly, the spike noted in July doesn’t correspond to a single major shooting but rather several smaller events scattered across the country. This highlights the widespread nature of the problem rather than isolated incidents.\nThis also potentially highlights a seasonal trend of shootings. Mass shootings seem to be higher across summer months than any other months of the year. In future reserach I am curious to see if this trend of summer shootings is common across time.\n\n\nCode\nimport sys\nprint(sys.executable)\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\ndf = pd.read_csv(\"../mass_shootings_2025.csv\")\n\n# Prepare data\ndf['Month'] = pd.to_datetime(df['Date']).dt.month\nmonthly = df.groupby('Month')[['Total Deaths', 'Total Injuries']].sum().reset_index()\n\n# Plot stacked bars\nfig, ax = plt.subplots(figsize=(10, 6))\n\n# Plot deaths\nax.bar(monthly['Month'], monthly['Total Deaths'], color='DarkRed', label='Deaths')\n\n# Plot injuries on top\nax.bar(monthly['Month'], monthly['Total Injuries'], \n       bottom=monthly['Total Deaths'], color='SteelBlue', label='Injuries')\n\n# Labels and title\nax.set_title('Total Deaths and Injuries by Month in 2025')\nax.set_xlabel('Month')\nax.set_ylabel('Count')\nax.set_xticks(range(1, 13))\nax.set_xticklabels(['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'])\nax.legend()\n\n# Note below plot\nplt.figtext(0.55, -0.02,\n            \"Note: This graph was created on November 12, 2025.\\nShootings for November and December are incomplete.\")\n\nplt.tight_layout()\nplt.show()\n\n\n/opt/miniconda3/bin/python\n\n\n\n\n\n\n\n\nFigure 1: Total Victims by Month",
-    "crumbs": [
-      "Data Acquisition Project"
-    ]
-  },
-  {
-    "objectID": "projects/data-acquisition.html#shootings-by-state",
-    "href": "projects/data-acquisition.html#shootings-by-state",
-    "title": "Data Acquisition Project",
-    "section": "Shootings by State",
-    "text": "Shootings by State\nI was also highly interested in if shootings were concentrated in a certain location. I used a bar chart to compare shootings by state.\nMost shootings occurred in Texas, California, and Illinois. Texas, California, and Illinois are all highly populated states, so containing a high proportion of shootings seems realistic. In future research I am curious to see if states with high shootings are strongly correlated with low income states or states with little gun regulation.\n\n\nCode\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Example: your state counts\nstate_counts = df['State or Territory'].value_counts().reset_index()\nstate_counts.columns = ['State or Territory', 'Total Shootings']\n\n# Plot\nfig, ax = plt.subplots(figsize=(12, 8))\nbars = ax.barh(state_counts['State or Territory'], state_counts['Total Shootings'], color='teal')\n\n# Add numbers at the end of each bar\nfor bar in bars:\n    width = bar.get_width()\n    ax.text(width + 0.5, bar.get_y() + bar.get_height()/2,  # x-position, y-position\n            f'{int(width)}', va='center', ha='left', fontsize=10)\n\n# Labels and title\nax.set_xlabel('Total Shootings')\nax.set_title('Total Shootings by State or Territory')\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\nFigure 3: Total Shootings by US State or Territory\n\n\n\n\n\nThis EDA answers my initial questions by showing that mass shootings are spread across the U.S., with certain months and states showing higher frequency. A next step could involve comparing 2025 to prior years or exploring correlations with socioeconomic or political events.",
-    "crumbs": [
-      "Data Acquisition Project"
-    ]
-  },
-  {
-    "objectID": "projects/data-acquisition.html#distribution-of-victims-per-shooting",
-    "href": "projects/data-acquisition.html#distribution-of-victims-per-shooting",
-    "title": "Data Acquisition Project",
-    "section": "Distribution of Victims per Shooting",
-    "text": "Distribution of Victims per Shooting\nAfter looking at the distribution of victims by month of the year I was curious to know how many victims there are per shooting. The following boxplot highlights and median and interquartile range of the data. The data is clearly right skewed with the median falling around 5 and several outliers that range up to 30.\n\n\nCode\nimport seaborn as sns\nimport pandas as pd\n\n# Load your dataset\ndf = pd.read_csv(\"../mass_shootings_2025.csv\")\n\n# Compute total victims per shooting\ndf['Total Victims'] = df['Total Deaths'] + df['Total Injuries']\n\n\nplt.figure(figsize=(8,6))\nsns.boxplot(x=df['Total Victims'], color='lightcoral')\nplt.title(\"Boxplot of Victims per Shooting in 2025\")\nplt.xlabel(\"Number of Victims\")\nplt.show()\n\n\n\n\n\n\n\n\nFigure 2: Boxplot of Distribution of Victims per Shooting",
-    "crumbs": [
-      "Data Acquisition Project"
-    ]
   }
 ]
