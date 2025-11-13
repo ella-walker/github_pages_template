@@ -248,9 +248,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#summary-of-steps" id="toc-summary-of-steps" class="nav-link" data-scroll-target="#summary-of-steps">Summary of Steps</a></li>
   <li><a href="#eda-highlights" id="toc-eda-highlights" class="nav-link" data-scroll-target="#eda-highlights">EDA Highlights</a>
   <ul class="collapse">
-  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics">Summary Statistics</a></li>
-  <li><a href="#relevant-graphics" id="toc-relevant-graphics" class="nav-link" data-scroll-target="#relevant-graphics">Relevant Graphics</a></li>
+  <li><a href="#victims-by-month" id="toc-victims-by-month" class="nav-link" data-scroll-target="#victims-by-month">Victims by Month</a></li>
+  <li><a href="#distribution-of-victims-per-shooting" id="toc-distribution-of-victims-per-shooting" class="nav-link" data-scroll-target="#distribution-of-victims-per-shooting">Distribution of Victims per Shooting</a></li>
+  <li><a href="#shootings-by-state" id="toc-shootings-by-state" class="nav-link" data-scroll-target="#shootings-by-state">Shootings by State</a></li>
   </ul></li>
+  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics">Summary Statistics</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
@@ -293,29 +295,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Introduction</h1>
 <p>For this project I created my own dataset in which I used webscraping techniques to create a unique dataframe that I could explore. I chose to explore information on mass shootings in the United States so far in 2025. I was curious when and where shootings occurred most frequently, how many people died or were injured in mass shootings, and if there were any common characteristics between these tragic events.</p>
 <p>I believe that if we can understand this data then we can better create policy and regulation which will serve all American residents and promote peace and safety for everyone.</p>
+<p>I confirmed that the data I gathered from Wikipedia is publicly available and can be freely used for educational purposes. I made sure to include a user-agent in my requests and kept my scraping minimal to avoid overloading the site.</p>
 </section>
 <section id="summary-of-steps" class="level1">
 <h1>Summary of Steps</h1>
-<ol type="1">
-<li>Find the Data</li>
-</ol>
+<p><strong>1. Find the Data</strong></p>
 <p>I found a <a href="https://en.wikipedia.org/wiki/List_of_mass_shootings_in_the_United_States_in_2025">Wikipedia page</a> which included a table that had an up to date list of shootings in the United States. This table contained all the relevant information I was looking for.</p>
-<ol start="2" type="1">
-<li>Scrape the Data</li>
-</ol>
-<p>I used the requests library to HTTP requests from Wikipedia and then pandas to manipulate and read the HTML tables. The table that I used for my analysis originally contained ___ entries and 6 variables. These variables were a combination of numeric and categorical.</p>
-<ol start="3" type="1">
-<li>Clean Data</li>
-</ol>
+<p><strong>2. Scrape the Data</strong></p>
+<p>I used the requests library to facilitate HTTP requests from Wikipedia and then pandas to manipulate and read the HTML tables. The table that I used for my analysis originally contained 385 entries and 6 variables. These variables were a combination of numeric and categorical.</p>
+<p><strong>3. Clean Data</strong></p>
 <p>The data did not contain any missing values and was already well organized, but there were still some changes I had to make.</p>
 <ol type="a">
 <li>I renamed variables for clarity.</li>
 </ol>
-<p>Some of the variables, like “Location” or “Total” were confusing and could only be understood in the context of the article associated with the page. I renamed these to a clearer “City” and “Total Vicitms” respectively.</p>
+<p>Some of the variables, like “Location” or “Total” were confusing and could only be understood in the context of the article associated with the page. I renamed these to clearer names: “City” and “Total Victims” respectively.</p>
 <ol start="2" type="a">
 <li>Next I had to reformat the entries</li>
 </ol>
-<p>The date was in the format of Month, Day (i.e.&nbsp;November, 12). I reformatted this to include the year and make it easier to reorder. I used for the standard format of YYYY-MM-DD. I also changed City Name. In the original table, there were footnotes marking if the perpetrator was injured or killed or if the victim did not die during the event but died later. I created a new indicator column with perpetrator deaths and perpetrator injuries.</p>
+<p>The date was in the format of Month, Day (i.e.&nbsp;November, 12). I reformatted this to include the year and make it easier to reorder. I used for the standard format of YYYY-MM-DD.</p>
+<p>In the original table, there were footnotes marking if the perpetrator was injured or killed or if the victim did not die during the event but died later. I created a new indicator column with perpetrator deaths and perpetrator injuries.</p>
 <ol start="3" type="a">
 <li>Reordering the Data</li>
 </ol>
@@ -324,19 +322,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Description of Event</li>
 </ol>
 <p>I decided to keep the column with a description of the event. Although it may not be extremely relevant during the EDA process, I know that it can have use in further analysis. However, I reordered the columns so that it was the last column.</p>
-<ol start="4" type="1">
-<li>Explore Data in EDA</li>
-</ol>
-<p>I chose to use the libraries matplotlib and seaborn to create visuals which would help my understand the data and answer my questions. All visualizations are included in the EDA portion of this blog.</p>
-<ol start="5" type="1">
-<li>Draw Conclusions</li>
-</ol>
-<p>I looked for answers to my initial questions. I am happy to share my findings in the conclusion of this blog.</p>
+<p><strong>4. Explore Data in EDA</strong></p>
+<p>I chose to use the libraries matplotlib and seaborn to create visuals which would help me understand the data and answer my questions. All visualizations are included in the EDA portion of this blog.</p>
+<p><strong>5. Draw Conclusions</strong></p>
+<p>In my analysis I looked for answers to my initial questions. I am happy to share my findings in the conclusion of this blog.</p>
 </section>
 <section id="eda-highlights" class="level1">
 <h1>EDA Highlights</h1>
 <p>My EDA was very revealing regarding trends in mass shootings. I have included several categories of information that may be of interest.</p>
-<p>The plot below is a bar graph showing total victims by month with deaths shown in red and injuries shown in blue. As we can see, there are a significant amount of victims in July compared to other months of the year. When we read the description for shootings in July, we don’t see a significant event or shooting. Instead, we find a series of minor shootings throughout the country.</p>
+<section id="victims-by-month" class="level2">
+<h2 class="anchored" data-anchor-id="victims-by-month">Victims by Month</h2>
+<p>The plot below is a bar graph showing total victims by month with deaths shown in red and injuries shown in blue. Interestingly, the spike noted in July doesn’t correspond to a single major shooting but rather several smaller events scattered across the country. This highlights the widespread nature of the problem rather than isolated incidents.</p>
+<p>This also potentially highlights a seasonal trend of shootings. Mass shootings seem to be higher across summer months than any other months of the year. In future reserach I am curious to see if this trend of summer shootings is common across time.</p>
 <div id="cell-fig-victimsbymonth" class="cell" data-dpi="150" data-fig-height="6" data-fig-width="10" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
@@ -393,32 +390,72 @@ Figure&nbsp;1: Total Victims by Month
 </div>
 </div>
 </div>
-<p>I was also highly interested in if shootings were concentrated in a certain location. I used a bar chart to compare shootings by state.</p>
-<div id="cell-fig-shootingsbystate" class="cell" data-dpi="150" data-fig-height="6" data-fig-width="10" data-execution_count="2">
+</section>
+<section id="distribution-of-victims-per-shooting" class="level2">
+<h2 class="anchored" data-anchor-id="distribution-of-victims-per-shooting">Distribution of Victims per Shooting</h2>
+<p>After looking at the distribution of victims by month of the year I was curious to know how many victims there are per shooting. The following boxplot highlights and median and interquartile range of the data. The data is clearly right skewed with the median falling around 5 and several outliers that range up to 30.</p>
+<div id="cell-fig-distributionofvictims" class="cell" data-dpi="150" data-fig-height="6" data-fig-width="10" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: your state counts</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>state_counts <span class="op">=</span> df[<span class="st">'State or Territory'</span>].value_counts().reset_index()</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>state_counts.columns <span class="op">=</span> [<span class="st">'State or Territory'</span>, <span class="st">'Total Shootings'</span>]</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax.barh(state_counts[<span class="st">'State or Territory'</span>], state_counts[<span class="st">'Total Shootings'</span>], color<span class="op">=</span><span class="st">'teal'</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Add numbers at the end of each bar</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bar <span class="kw">in</span> bars:</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    width <span class="op">=</span> bar.get_width()</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    ax.text(width <span class="op">+</span> <span class="fl">0.5</span>, bar.get_y() <span class="op">+</span> bar.get_height()<span class="op">/</span><span class="dv">2</span>,  <span class="co"># x-position, y-position</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span><span class="bu">int</span>(width)<span class="sc">}</span><span class="ss">'</span>, va<span class="op">=</span><span class="st">'center'</span>, ha<span class="op">=</span><span class="st">'left'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Labels and title</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Total Shootings'</span>)</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Total Shootings by State or Territory'</span>)</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load your dataset</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"../mass_shootings_2025.csv"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute total victims per shooting</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Total Victims'</span>] <span class="op">=</span> df[<span class="st">'Total Deaths'</span>] <span class="op">+</span> df[<span class="st">'Total Injuries'</span>]</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span>df[<span class="st">'Total Victims'</span>], color<span class="op">=</span><span class="st">'lightcoral'</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Boxplot of Victims per Shooting in 2025"</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Number of Victims"</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-distributionofvictims" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-distributionofvictims-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="data-acquisition_files/figure-html/fig-distributionofvictims-output-1.png" width="619" height="523" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-distributionofvictims-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Boxplot of Distribution of Victims per Shooting
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="shootings-by-state" class="level2">
+<h2 class="anchored" data-anchor-id="shootings-by-state">Shootings by State</h2>
+<p>I was also highly interested in if shootings were concentrated in a certain location. I used a bar chart to compare shootings by state.</p>
+<p>Most shootings occurred in Texas, California, and Illinois. Texas, California, and Illinois are all highly populated states, so containing a high proportion of shootings seems realistic. In future research I am curious to see if states with high shootings are strongly correlated with low income states or states with little gun regulation.</p>
+<div id="cell-fig-shootingsbystate" class="cell" data-dpi="150" data-fig-height="6" data-fig-width="10" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: your state counts</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>state_counts <span class="op">=</span> df[<span class="st">'State or Territory'</span>].value_counts().reset_index()</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>state_counts.columns <span class="op">=</span> [<span class="st">'State or Territory'</span>, <span class="st">'Total Shootings'</span>]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax.barh(state_counts[<span class="st">'State or Territory'</span>], state_counts[<span class="st">'Total Shootings'</span>], color<span class="op">=</span><span class="st">'teal'</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Add numbers at the end of each bar</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bar <span class="kw">in</span> bars:</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    width <span class="op">=</span> bar.get_width()</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    ax.text(width <span class="op">+</span> <span class="fl">0.5</span>, bar.get_y() <span class="op">+</span> bar.get_height()<span class="op">/</span><span class="dv">2</span>,  <span class="co"># x-position, y-position</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span><span class="bu">int</span>(width)<span class="sc">}</span><span class="ss">'</span>, va<span class="op">=</span><span class="st">'center'</span>, ha<span class="op">=</span><span class="st">'left'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Labels and title</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Total Shootings'</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Total Shootings by State or Territory'</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-shootingsbystate" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -427,30 +464,39 @@ Figure&nbsp;1: Total Victims by Month
 <img src="data-acquisition_files/figure-html/fig-shootingsbystate-output-1.png" width="1141" height="758" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-shootingsbystate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Total Shootings by US State or Territory
+Figure&nbsp;3: Total Shootings by US State or Territory
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<section id="summary-statistics" class="level2">
-<h2 class="anchored" data-anchor-id="summary-statistics">Summary Statistics</h2>
+<p>This EDA answers my initial questions by showing that mass shootings are spread across the U.S., with certain months and states showing higher frequency. A next step could involve comparing 2025 to prior years or exploring correlations with socioeconomic or political events.</p>
+</section>
+</section>
+<section id="summary-statistics" class="level1">
+<h1>Summary Statistics</h1>
 <ul>
 <li><p>Total Shootings: 385</p></li>
 <li><p>Total Deaths: 375</p></li>
 <li><p>Total Injuries: 1723</p></li>
 <li><p>Average Victims per Shooting: 5.45</p></li>
+<li><p>Total Percentage of Shootings with Perpetrator Deaths: 8.31%</p></li>
+<li><p>Total Percentage of Shootings with Perpetrator Injuries: 2.60%</p></li>
 </ul>
-</section>
-<section id="relevant-graphics" class="level2">
-<h2 class="anchored" data-anchor-id="relevant-graphics">Relevant Graphics</h2>
-</section>
 </section>
 <section id="conclusion" class="level1">
 <h1>Conclusion</h1>
-<p>Ultimately my findings revealed this information about mass shootings in the United States ____. I am curious how this information compares to previous years in American history, with a specific interest around major political or economic events. I am also curious how these results compare to other countries with a similar GDP and culture.</p>
-<p>One note I would like to make is that the blog was posted on November 12, 2025. Thus this does not include any data from November 12 to December 31 of 2025. However, I ultimately still chose to use 2025 data because I felt it was more relevant than any past data could be. The Wikipedia page cited in the Resources section of this blog will continue to be updated as shooting, unfortunately, occur in the U.S. throughout the rest of the year.</p>
-<p><strong>Further Information and Resources</strong> The data used for this analysis can be found on <a href="https://en.wikipedia.org/wiki/List_of_mass_shootings_in_the_United_States_in_2025">this</a> Wikipedia page on mass shootings in the United States in 2025 so far.</p>
+<p>Ultimately my findings revealed several interesting points about mass shootings in the United States.</p>
+<ul>
+<li><p>Shootings are more common in summer months, with July having the highest number of mass shootings</p></li>
+<li><p>Shootings are highly skewed, with many small shootings and a few large shootings.</p></li>
+<li><p>States with higher populations have a higher proportion of shootings.</p></li>
+</ul>
+<p>I am curious how this information compares to previous years in American history, with a specific interest around major political or economic events. I am also curious how these results compare to other countries with a similar GDP and culture. Clearly there is a lot of room for future exploration.</p>
+<p>Ultimately, I was able to answer my initial questions, develop new questions, and learn more about data acquisition and exploration through the process.</p>
+<p><strong>Further Information and Resources</strong></p>
+<p>One note I would like to make is that this blog was posted on November 12, 2025. Thus this does not include any data from November 12 to December 31 of 2025. However, I ultimately still chose to use 2025 data because I felt it was more relevant than any past data could be. The Wikipedia page cited below will continue to be updated as shooting, unfortunately, occur in the U.S. throughout the rest of the year.</p>
+<p>The data used for this analysis can be found on <a href="https://en.wikipedia.org/wiki/List_of_mass_shootings_in_the_United_States_in_2025">this</a> Wikipedia page on mass shootings in the United States in 2025.</p>
 <p>You can find the Github repository containing my full analysis <a href="https://github.com/ella-walker/Data-Acquisition-Blog">here</a> if you are interested to learn more.</p>
 
 
@@ -910,167 +956,221 @@ Figure&nbsp;2: Total Shootings by US State or Territory
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data Acquisition Project"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Ella Walker"</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2025-11-12"</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>For this project I created my own dataset in which I used webscraping techniques to create a unique dataframe that I could explore. I chose to explore information on mass shootings in the United States so far in 2025. I was curious when and where shootings occurred most frequently, how many people died or were injured in mass shootings, and if there were any common characteristics between these tragic events. </span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>I believe that if we can understand this data then we can better create policy and regulation which will serve all American residents and promote peace and safety for everyone.</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu"># Summary of Steps</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Find the Data</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  I found a <span class="co">[</span><span class="ot">Wikipedia page</span><span class="co">](https://en.wikipedia.org/wiki/List_of_mass_shootings_in_the_United_States_in_2025)</span> which included a table that had an up to date list of shootings in the United States. This table contained all the relevant information I was looking for.</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Scrape the Data</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  I used the requests library to HTTP requests from Wikipedia and then pandas to manipulate and read the HTML tables. The table that I used for my analysis originally contained ___ entries and 6 variables. These variables were a combination of numeric and categorical.</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Clean Data</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>  The data did not contain any missing values and was already well organized, but there were still some changes I had to make. </span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  a. I renamed variables for clarity. </span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>  Some of the variables, like "Location" or "Total" were confusing and could only be understood in the context of the article associated with the page. I renamed these to a clearer "City" and "Total Vicitms" respectively. </span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>  b. Next I had to reformat the entries</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  The date was in the format of Month, Day (i.e. November, 12). I reformatted this to include the year and make it easier to reorder. I used for the standard format of YYYY-MM-DD.</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>  I also changed City Name. In the original table, there were footnotes marking if the perpetrator was injured or killed or if the victim did not die during the event but died later. I created a new indicator column with perpetrator deaths and perpetrator injuries.</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  c. Reordering the Data</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>  I reformatted the data to be chronological. The first entry is now January 1, 2025.</span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>  d. Description of Event</span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>  I decided to keep the column with a description of the event. Although it may not be extremely relevant during the EDA process, I know that it can have use in further analysis. However, I reordered the columns so that it was the last column.</span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Explore Data in EDA</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>I chose to use the libraries matplotlib and seaborn to create visuals which would help my understand the data and answer my questions. All visualizations are included in the EDA portion of this blog.</span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Draw Conclusions</span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>I looked for answers to my initial questions. I am happy to share my findings in the conclusion of this blog.</span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="fu"># EDA Highlights</span></span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>My EDA was very revealing regarding trends in mass shootings. I have included several categories of information that may be of interest.</span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>The plot below is a bar graph showing total victims by month with deaths shown in red and injuries shown in blue. As we can see, there are a significant amount of victims in July compared to other months of the year. When we read the description for shootings in July, we don't see a significant event or shooting. Instead, we find a series of minor shootings throughout the country.</span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-victimsbymonth</span></span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Total Victims by Month"</span></span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a><span class="co">#| dpi: 150</span></span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.executable)</span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"../mass_shootings_2025.csv"</span>)</span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare data</span></span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Month'</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">'Date'</span>]).dt.month</span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>monthly <span class="op">=</span> df.groupby(<span class="st">'Month'</span>)[[<span class="st">'Total Deaths'</span>, <span class="st">'Total Injuries'</span>]].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot stacked bars</span></span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot deaths</span></span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>ax.bar(monthly[<span class="st">'Month'</span>], monthly[<span class="st">'Total Deaths'</span>], color<span class="op">=</span><span class="st">'DarkRed'</span>, label<span class="op">=</span><span class="st">'Deaths'</span>)</span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot injuries on top</span></span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>ax.bar(monthly[<span class="st">'Month'</span>], monthly[<span class="st">'Total Injuries'</span>], </span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>       bottom<span class="op">=</span>monthly[<span class="st">'Total Deaths'</span>], color<span class="op">=</span><span class="st">'SteelBlue'</span>, label<span class="op">=</span><span class="st">'Injuries'</span>)</span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a><span class="co"># Labels and title</span></span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Total Deaths and Injuries by Month in 2025'</span>)</span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Month'</span>)</span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Count'</span>)</span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">13</span>))</span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels([<span class="st">'Jan'</span>,<span class="st">'Feb'</span>,<span class="st">'Mar'</span>,<span class="st">'Apr'</span>,<span class="st">'May'</span>,<span class="st">'Jun'</span>,<span class="st">'Jul'</span>,<span class="st">'Aug'</span>,<span class="st">'Sep'</span>,<span class="st">'Oct'</span>,<span class="st">'Nov'</span>,<span class="st">'Dec'</span>])</span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
-<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a><span class="co"># Note below plot</span></span>
-<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>plt.figtext(<span class="fl">0.55</span>, <span class="op">-</span><span class="fl">0.02</span>,</span>
-<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Note: This graph was created on November 12, 2025.</span><span class="ch">\n</span><span class="st">Shootings for November and December are incomplete."</span>)</span>
-<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>I was also highly interested in if shootings were concentrated in a certain location. I used a bar chart to compare shootings by state.</span>
-<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-shootingsbystate</span></span>
-<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Total Shootings by US State or Territory"</span></span>
-<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
-<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a><span class="co">#| dpi: 150</span></span>
-<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: your state counts</span></span>
-<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a>state_counts <span class="op">=</span> df[<span class="st">'State or Territory'</span>].value_counts().reset_index()</span>
-<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a>state_counts.columns <span class="op">=</span> [<span class="st">'State or Territory'</span>, <span class="st">'Total Shootings'</span>]</span>
-<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
-<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
-<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax.barh(state_counts[<span class="st">'State or Territory'</span>], state_counts[<span class="st">'Total Shootings'</span>], color<span class="op">=</span><span class="st">'teal'</span>)</span>
-<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a><span class="co"># Add numbers at the end of each bar</span></span>
-<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bar <span class="kw">in</span> bars:</span>
-<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a>    width <span class="op">=</span> bar.get_width()</span>
-<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a>    ax.text(width <span class="op">+</span> <span class="fl">0.5</span>, bar.get_y() <span class="op">+</span> bar.get_height()<span class="op">/</span><span class="dv">2</span>,  <span class="co"># x-position, y-position</span></span>
-<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span><span class="bu">int</span>(width)<span class="sc">}</span><span class="ss">'</span>, va<span class="op">=</span><span class="st">'center'</span>, ha<span class="op">=</span><span class="st">'left'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a><span class="co"># Labels and title</span></span>
-<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Total Shootings'</span>)</span>
-<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Total Shootings by State or Territory'</span>)</span>
-<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary Statistics</span></span>
-<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Total Shootings: 385</span>
-<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Total Deaths: 375</span>
-<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Total Injuries: 1723</span>
-<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Average Victims per Shooting: 5.45</span>
-<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a><span class="fu">## Relevant Graphics</span></span>
-<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusion</span></span>
-<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a>Ultimately my findings revealed this information about mass shootings in the United States ____. I am curious how this information compares to previous years in American history, with a specific interest around major political or economic events. I am also curious how these results compare to other countries with a similar GDP and culture.</span>
-<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a>One note I would like to make is that the blog was posted on November 12, 2025. Thus this does not include any data from November 12 to December 31 of 2025. However, I ultimately still chose to use 2025 data because I felt it was more relevant than any past data could be. The Wikipedia page cited in the Resources section of this blog will continue to be updated as shooting, unfortunately, occur in the U.S. throughout the rest of the year.</span>
-<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a>**Further Information and Resources**</span>
-<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a>The data used for this analysis can be found on <span class="co">[</span><span class="ot">this</span><span class="co">](https://en.wikipedia.org/wiki/List_of_mass_shootings_in_the_United_States_in_2025)</span> Wikipedia page on mass shootings in the United States in 2025 so far.</span>
-<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a>You can find the Github repository containing my full analysis <span class="co">[</span><span class="ot">here</span><span class="co">](https://github.com/ella-walker/Data-Acquisition-Blog)</span> if you are interested to learn more.</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data Acquisition Project"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Ella Walker"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2025-11-12"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>For this project I created my own dataset in which I used webscraping techniques to create a unique dataframe that I could explore. I chose to explore information on mass shootings in the United States so far in 2025. I was curious when and where shootings occurred most frequently, how many people died or were injured in mass shootings, and if there were any common characteristics between these tragic events. </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>I believe that if we can understand this data then we can better create policy and regulation which will serve all American residents and promote peace and safety for everyone.</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>I confirmed that the data I gathered from Wikipedia is publicly available and can be freely used for educational purposes. I made sure to include a user-agent in my requests and kept my scraping minimal to avoid overloading the site.</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="fu"># Summary of Steps</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>**1. Find the Data**</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  I found a <span class="co">[</span><span class="ot">Wikipedia page</span><span class="co">](https://en.wikipedia.org/wiki/List_of_mass_shootings_in_the_United_States_in_2025)</span> which included a table that had an up to date list of shootings in the United States. This table contained all the relevant information I was looking for.</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>**2. Scrape the Data**</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  I used the requests library to facilitate HTTP requests from Wikipedia and then pandas to manipulate and read the HTML tables. The table that I used for my analysis originally contained 385 entries and 6 variables. These variables were a combination of numeric and categorical.</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>**3. Clean Data**</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  The data did not contain any missing values and was already well organized, but there were still some changes I had to make. </span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  a. I renamed variables for clarity. </span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  Some of the variables, like "Location" or "Total" were confusing and could only be understood in the context of the article associated with the page. I renamed these to clearer names: "City" and "Total Victims" respectively. </span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  b. Next I had to reformat the entries</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>  The date was in the format of Month, Day (i.e. November, 12). I reformatted this to include the year and make it easier to reorder. I used for the standard format of YYYY-MM-DD.</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a> In the original table, there were footnotes marking if the perpetrator was injured or killed or if the victim did not die during the event but died later. I created a new indicator column with perpetrator deaths and perpetrator injuries.</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>  c. Reordering the Data</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>  I reformatted the data to be chronological. The first entry is now January 1, 2025.</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>  d. Description of Event</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>  I decided to keep the column with a description of the event. Although it may not be extremely relevant during the EDA process, I know that it can have use in further analysis. However, I reordered the columns so that it was the last column.</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>**4. Explore Data in EDA**</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>I chose to use the libraries matplotlib and seaborn to create visuals which would help me understand the data and answer my questions. All visualizations are included in the EDA portion of this blog.</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>**5. Draw Conclusions**</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>In my analysis I looked for answers to my initial questions. I am happy to share my findings in the conclusion of this blog.</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="fu"># EDA Highlights</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>My EDA was very revealing regarding trends in mass shootings. I have included several categories of information that may be of interest.</span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="fu">## Victims by Month</span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>The plot below is a bar graph showing total victims by month with deaths shown in red and injuries shown in blue. Interestingly, the spike noted in July doesn’t correspond to a single major shooting but rather several smaller events scattered across the country. This highlights the widespread nature of the problem rather than isolated incidents.</span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>This also potentially highlights a seasonal trend of shootings. Mass shootings seem to be higher across summer months than any other months of the year. In future reserach I am curious to see if this trend of summer shootings is common across time.</span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-victimsbymonth</span></span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Total Victims by Month"</span></span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a><span class="co">#| dpi: 150</span></span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.executable)</span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"../mass_shootings_2025.csv"</span>)</span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare data</span></span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Month'</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">'Date'</span>]).dt.month</span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>monthly <span class="op">=</span> df.groupby(<span class="st">'Month'</span>)[[<span class="st">'Total Deaths'</span>, <span class="st">'Total Injuries'</span>]].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot stacked bars</span></span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot deaths</span></span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a>ax.bar(monthly[<span class="st">'Month'</span>], monthly[<span class="st">'Total Deaths'</span>], color<span class="op">=</span><span class="st">'DarkRed'</span>, label<span class="op">=</span><span class="st">'Deaths'</span>)</span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot injuries on top</span></span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a>ax.bar(monthly[<span class="st">'Month'</span>], monthly[<span class="st">'Total Injuries'</span>], </span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>       bottom<span class="op">=</span>monthly[<span class="st">'Total Deaths'</span>], color<span class="op">=</span><span class="st">'SteelBlue'</span>, label<span class="op">=</span><span class="st">'Injuries'</span>)</span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a><span class="co"># Labels and title</span></span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Total Deaths and Injuries by Month in 2025'</span>)</span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Month'</span>)</span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Count'</span>)</span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">13</span>))</span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels([<span class="st">'Jan'</span>,<span class="st">'Feb'</span>,<span class="st">'Mar'</span>,<span class="st">'Apr'</span>,<span class="st">'May'</span>,<span class="st">'Jun'</span>,<span class="st">'Jul'</span>,<span class="st">'Aug'</span>,<span class="st">'Sep'</span>,<span class="st">'Oct'</span>,<span class="st">'Nov'</span>,<span class="st">'Dec'</span>])</span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a><span class="co"># Note below plot</span></span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a>plt.figtext(<span class="fl">0.55</span>, <span class="op">-</span><span class="fl">0.02</span>,</span>
+<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Note: This graph was created on November 12, 2025.</span><span class="ch">\n</span><span class="st">Shootings for November and December are incomplete."</span>)</span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a><span class="fu">## Distribution of Victims per Shooting</span></span>
+<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a>After looking at the distribution of victims by month of the year I was curious to know how many victims there are per shooting. The following boxplot highlights and median and interquartile range of the data. The data is clearly right skewed with the median falling around 5 and several outliers that range up to 30.</span>
+<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-distributionofvictims</span></span>
+<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Boxplot of Distribution of Victims per Shooting"</span></span>
+<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
+<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a><span class="co">#| dpi: 150</span></span>
+<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a><span class="co"># Load your dataset</span></span>
+<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"../mass_shootings_2025.csv"</span>)</span>
+<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute total victims per shooting</span></span>
+<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Total Victims'</span>] <span class="op">=</span> df[<span class="st">'Total Deaths'</span>] <span class="op">+</span> df[<span class="st">'Total Injuries'</span>]</span>
+<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span>df[<span class="st">'Total Victims'</span>], color<span class="op">=</span><span class="st">'lightcoral'</span>)</span>
+<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Boxplot of Victims per Shooting in 2025"</span>)</span>
+<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Number of Victims"</span>)</span>
+<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-147"><a href="#cb5-147" aria-hidden="true" tabindex="-1"></a><span class="fu">## Shootings by State</span></span>
+<span id="cb5-148"><a href="#cb5-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a>I was also highly interested in if shootings were concentrated in a certain location. I used a bar chart to compare shootings by state.</span>
+<span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a>Most shootings occurred in Texas, California, and Illinois. Texas, California, and Illinois are all highly populated states, so containing a high proportion of shootings seems realistic. In future research I am curious to see if states with high shootings are strongly correlated with low income states or states with little gun regulation.</span>
+<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-155"><a href="#cb5-155" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb5-156"><a href="#cb5-156" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-shootingsbystate</span></span>
+<span id="cb5-157"><a href="#cb5-157" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Total Shootings by US State or Territory"</span></span>
+<span id="cb5-158"><a href="#cb5-158" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb5-159"><a href="#cb5-159" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
+<span id="cb5-160"><a href="#cb5-160" aria-hidden="true" tabindex="-1"></a><span class="co">#| dpi: 150</span></span>
+<span id="cb5-161"><a href="#cb5-161" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-162"><a href="#cb5-162" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-163"><a href="#cb5-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-164"><a href="#cb5-164" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: your state counts</span></span>
+<span id="cb5-165"><a href="#cb5-165" aria-hidden="true" tabindex="-1"></a>state_counts <span class="op">=</span> df[<span class="st">'State or Territory'</span>].value_counts().reset_index()</span>
+<span id="cb5-166"><a href="#cb5-166" aria-hidden="true" tabindex="-1"></a>state_counts.columns <span class="op">=</span> [<span class="st">'State or Territory'</span>, <span class="st">'Total Shootings'</span>]</span>
+<span id="cb5-167"><a href="#cb5-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-168"><a href="#cb5-168" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb5-169"><a href="#cb5-169" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb5-170"><a href="#cb5-170" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax.barh(state_counts[<span class="st">'State or Territory'</span>], state_counts[<span class="st">'Total Shootings'</span>], color<span class="op">=</span><span class="st">'teal'</span>)</span>
+<span id="cb5-171"><a href="#cb5-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-172"><a href="#cb5-172" aria-hidden="true" tabindex="-1"></a><span class="co"># Add numbers at the end of each bar</span></span>
+<span id="cb5-173"><a href="#cb5-173" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bar <span class="kw">in</span> bars:</span>
+<span id="cb5-174"><a href="#cb5-174" aria-hidden="true" tabindex="-1"></a>    width <span class="op">=</span> bar.get_width()</span>
+<span id="cb5-175"><a href="#cb5-175" aria-hidden="true" tabindex="-1"></a>    ax.text(width <span class="op">+</span> <span class="fl">0.5</span>, bar.get_y() <span class="op">+</span> bar.get_height()<span class="op">/</span><span class="dv">2</span>,  <span class="co"># x-position, y-position</span></span>
+<span id="cb5-176"><a href="#cb5-176" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span><span class="bu">int</span>(width)<span class="sc">}</span><span class="ss">'</span>, va<span class="op">=</span><span class="st">'center'</span>, ha<span class="op">=</span><span class="st">'left'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb5-177"><a href="#cb5-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-178"><a href="#cb5-178" aria-hidden="true" tabindex="-1"></a><span class="co"># Labels and title</span></span>
+<span id="cb5-179"><a href="#cb5-179" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Total Shootings'</span>)</span>
+<span id="cb5-180"><a href="#cb5-180" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Total Shootings by State or Territory'</span>)</span>
+<span id="cb5-181"><a href="#cb5-181" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb5-182"><a href="#cb5-182" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb5-183"><a href="#cb5-183" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-184"><a href="#cb5-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-185"><a href="#cb5-185" aria-hidden="true" tabindex="-1"></a>This EDA answers my initial questions by showing that mass shootings are spread across the U.S., with certain months and states showing higher frequency. A next step could involve comparing 2025 to prior years or exploring correlations with socioeconomic or political events.</span>
+<span id="cb5-186"><a href="#cb5-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-187"><a href="#cb5-187" aria-hidden="true" tabindex="-1"></a><span class="fu"># Summary Statistics</span></span>
+<span id="cb5-188"><a href="#cb5-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-189"><a href="#cb5-189" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Total Shootings: 385</span>
+<span id="cb5-190"><a href="#cb5-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-191"><a href="#cb5-191" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Total Deaths: 375</span>
+<span id="cb5-192"><a href="#cb5-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-193"><a href="#cb5-193" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Total Injuries: 1723</span>
+<span id="cb5-194"><a href="#cb5-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-195"><a href="#cb5-195" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Average Victims per Shooting: 5.45</span>
+<span id="cb5-196"><a href="#cb5-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-197"><a href="#cb5-197" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Total Percentage of Shootings with Perpetrator Deaths: 8.31%</span>
+<span id="cb5-198"><a href="#cb5-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-199"><a href="#cb5-199" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Total Percentage of Shootings with Perpetrator Injuries: 2.60%</span>
+<span id="cb5-200"><a href="#cb5-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-201"><a href="#cb5-201" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusion</span></span>
+<span id="cb5-202"><a href="#cb5-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-203"><a href="#cb5-203" aria-hidden="true" tabindex="-1"></a>Ultimately my findings revealed several interesting points about mass shootings in the United States.</span>
+<span id="cb5-204"><a href="#cb5-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-205"><a href="#cb5-205" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Shootings are more common in summer months, with July having the highest number of mass shootings</span>
+<span id="cb5-206"><a href="#cb5-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-207"><a href="#cb5-207" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Shootings are highly skewed, with many small shootings and a few large shootings.</span>
+<span id="cb5-208"><a href="#cb5-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-209"><a href="#cb5-209" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>States with higher populations have a higher proportion of shootings.</span>
+<span id="cb5-210"><a href="#cb5-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-211"><a href="#cb5-211" aria-hidden="true" tabindex="-1"></a>I am curious how this information compares to previous years in American history, with a specific interest around major political or economic events. I am also curious how these results compare to other countries with a similar GDP and culture. Clearly there is a lot of room for future exploration.</span>
+<span id="cb5-212"><a href="#cb5-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-213"><a href="#cb5-213" aria-hidden="true" tabindex="-1"></a>Ultimately, I was able to answer my initial questions, develop new questions, and learn more about data acquisition and exploration through the process.</span>
+<span id="cb5-214"><a href="#cb5-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-215"><a href="#cb5-215" aria-hidden="true" tabindex="-1"></a>**Further Information and Resources**</span>
+<span id="cb5-216"><a href="#cb5-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-217"><a href="#cb5-217" aria-hidden="true" tabindex="-1"></a>One note I would like to make is that this blog was posted on November 12, 2025. Thus this does not include any data from November 12 to December 31 of 2025. However, I ultimately still chose to use 2025 data because I felt it was more relevant than any past data could be. The Wikipedia page cited below will continue to be updated as shooting, unfortunately, occur in the U.S. throughout the rest of the year.</span>
+<span id="cb5-218"><a href="#cb5-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-219"><a href="#cb5-219" aria-hidden="true" tabindex="-1"></a>The data used for this analysis can be found on <span class="co">[</span><span class="ot">this</span><span class="co">](https://en.wikipedia.org/wiki/List_of_mass_shootings_in_the_United_States_in_2025)</span> Wikipedia page on mass shootings in the United States in 2025.</span>
+<span id="cb5-220"><a href="#cb5-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-221"><a href="#cb5-221" aria-hidden="true" tabindex="-1"></a>You can find the Github repository containing my full analysis <span class="co">[</span><span class="ot">here</span><span class="co">](https://github.com/ella-walker/Data-Acquisition-Blog)</span> if you are interested to learn more.</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
